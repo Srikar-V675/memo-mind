@@ -20,6 +20,12 @@ The core vision behind Memo-Mind is to create a digital twin of the user. This "
 
 Currently, the prototype is focused on processing Obsidian notes. Future iterations aim to include other data sources, enabling a more comprehensive digital twin experience.
 
+## Team
+
+- Srikar V 
+- Sahana R
+- Sabah Tabasum
+
 ## Features
 
 - **Context-Aware Conversations**: Memo-Mind understands your previous interactions and the relationships between your notes, providing more accurate and relevant responses during a conversation.
