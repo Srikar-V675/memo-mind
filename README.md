@@ -40,6 +40,13 @@ Memo-Mind is built using the RAG (Retrieval-Augmented Generation) framework, whi
 - **Data Source**: Currently integrates with Obsidian notes in markdown format. Since markdown is one of the formats LLMs are trained on they can respond and understand markdown very well. 
 - **Knowledge Assistant Features**: Acts as a content idea generator, summarizer, and personal tutor for various tasks like revision, blog writing, and interview preparation.
 
+### Output
+
+The chatbot provides responses in natural language, mimicking your writing style and tone. It can generate content summaries, answer questions, provide explanations, and offer suggestions based on your notes and interactions.
+
+Below I've chosen the `Blogs or Article Writing` prompt to generate a response:
+
+
 ## Getting Started
 
 1. **Prerequisites**: Make sure you have Qdrant and Obsidian installed locally. Optionally, set up integrations for GitHub and other data sources for future expansion.
