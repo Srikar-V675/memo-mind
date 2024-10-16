@@ -1,0 +1,1025 @@
+[
+    {
+        "title": "Linked List",
+        "related_notes": [
+            "LL-Node.excalidraw",
+            "LL-vs-Array.excalidraw",
+            "Types-LL.excalidraw",
+            "Arrays",
+            "Two-Pointers",
+            "Arrays"
+        ],
+        "content": "# Linked List\n\n## Summary\n- Like [[Arrays]], Linked Lists is used to represent sequential data. But the way they store the data differs, where [[Arrays]] store their elements in a contagious memory while linked lists stores its elements that are scattered in memory by linking their addresses.\n\n![[LL-vs-Array.excalidraw]]\n\n- The elements in a Linked List are called as `Nodes`.\n\n### Memory Management\n- Biggest differentiator between [[Arrays]] and linked lists is the memory management. \n- [[Arrays]] \n\t- take up more memory or make use of the operations more because whenever we create an array we need to find a contiguous block of memory and sometimes it can take time to find it. \n\t- And when we need to add a element to an array, then if there is space we need to insert the array and shift the following elements. If there is no space or memory left then the whole array must be copied and recreated with more memory.\n\t- It is a static data structure.\n> [!note]\n> In the case dynamically typed languages like Ruby, JS, Python, we don't have to worry too much about how much memory an array uses as it is taken care of and is abstracted away. But it doesn't mean that it isn't happening because abstraction is just hiding away the things.\n- Linked lists\n\t- Since the nodes can be anywhere in the memory and as long as we have the address then we can link the nodes together.\n\t- In the case of adding elements we can just insert the new node and update the links you don't have to push the following elements like in [[Arrays]]. It is like doing a plug & play.\n\t- It is a dynamic data structure.\n\n### Parts of a Linked List\n- A Linked list contains a set of nodes that are linked together sequentially.\n- Each individual node contains:\n\t1. data: the actual value or element\n\t2. link: the link to next node (address)\n- The last node usually is linked to a null to indicate the end of list.\n- We need to make sure we don't lose the head or the first element of the list as there is no other way to access the linked list otherwise.\n\n![[LL-Node.excalidraw]]\n\n\n> [!quote]\n> \"A node only knows about what data it holds and who its neighbours is.\"\n\n### Types of LL\nThe parts of linked lists don't usually change but the way we structure can change leading to different types of linked lists for different use cases.\n\n1. **Singly Linked List - SLL**\n\t- These type of linked lists are the most simple type.\n\t- Each `Node` contains a data part and link part, where the link part links to the next `Node` of the same type.\n\t- You can traverse through the linked list only in one way - start at the head and go until you reach a `NULL`.\n2. **Doubly Linked List - DLL**\n\t- As the name suggests it has two links for each node: `prev` & `next`.\n\t- The `prev` part points to the previous node and `next` part points to the next node in the list.\n\t- Since they have two link parts they can travel in both ways from left to right or right to left.\n3. **Circular Linked List**\n\t- It is a weird data structure where the tail node is not `NULL` indicating end of list but there is a tail node that points to the head of the list which makes it circular.\n\t- Traversing by trying to find a `NULL` would make it a infinite loop, you need to know when to stop.\n\t- You can add an element to end of list easily because you can directly use the tail node to add to list and make that the new tail node and point it tot the head.\n\t- You can implement both SLL & DLL as a circular LL.\n\n![[Types-LL.excalidraw]]\n\n### To Use or Not Use\n- Linked lists are good when you usually need to insert or remove from the beginning of the list. But can be hell when you need to find or insert a element that is at the end of Linked list.\n\n> [!quote]\n> A linked lists is usually efficient when you want to add or remove some elements, but can be very slow to search and find a single element.\n\n**Points to Remember:**\n1. Linked lists are dynamic, they can grow & shrink easily.\n2. Inserting & deleting is fast & convenient\n3. Searching is slow\n4. Finding elements, requires traversal of whole LL and slow since you can't use binary search.\n\n### Time complexity\n\n|Operation|Big-O|Note|\n| | | |\n|Access|O(n)||\n|Search|O(n)||\n|Insert|O(1)|Assumes you have traversed to the insertion position|\n|Remove|O(1)|Assumes you have traversed to the node to be removed|\n\n### Common Routines\n- Finding the number of nodes in linked list\n- Finding middle or detecting cycle in LL by using the slow & fast pointer\n- Reversing a LL in-place.\n- Merge 2 LLs together.\n\n### Corner Cases\n1. Empty LL\n2. single node\n3. two nodes\n4. LL has cycles\n\n>[!tip]\n>Clarify with interviewer prior to solving a Linked List Q, if there can be a cycle in the Linked list.\n\n### Patterns/Techniques\n1. Make use of dummy nodes in front of the head to tackle edge cases like empty LL or single node.\n2. **2 pointers:** use slow & fast pointers effectively to solve Qs like find kth node from last, find the middle node, detect cycle in LL.\n3. **Elegant modification operations:** make modifications in-place (reversal), truncate a LL, swapping values of nodes(not links), combining 2 LLs\n\n### Essential Qs\n- [Reverse Linked List](https://github.com/Srikar-V675/DSA-Problems/blob/3ddaa74d67b82afd2b0400b88b4e3c0cf0291e1b/Linked%20Lists/Easy/1.%20Reverse%20Linked%20List.md)\n- [Linked List Cycle](https://github.com/Srikar-V675/DSA-Problems/blob/7a988ed05b1c873fbc39a64090acc4f8e92853f3/Linked%20Lists/Easy/2.%20Linked%20List%20Cycle.md)",
+        "references": [
+            {
+                "title": "Linked list cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/linked-list/"
+            },
+            {
+                "title": "What’s a Linked List, Anyway? \\[Part 1\\] | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/whats-a-linked-list-anyway-part-1-d8b7e6508b9d"
+            },
+            {
+                "title": "What’s a Linked List, Anyway? \\[Part 2\\] | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/whats-a-linked-list-anyway-part-2-131d96f71996"
+            }
+        ]
+    },
+    {
+        "title": "graphs breadth first search",
+        "related_notes": [
+            "trees",
+            "Matrix",
+            "tree level order traversal",
+            "graph-bfs-example.excalidraw",
+            "Queue",
+            "graph representations",
+            "graph representations#2D Grid or Matrix",
+            "graphs",
+            "graph representations",
+            "graphs",
+            "tree level order traversal"
+        ],
+        "content": "# Breadth First Search\n## Summary\nSimilar to how we implement [[tree level order traversal]] which is nothing but breadth first search, where we visit each node in a level and only then move on to the next level. \n\nThe basic steps of breadth first search in graphs are: \n1. Add the first node to the [[Queue]] and mark it as visited. \n2. Determine the neighbours of the topmost node in the [[Queue]].\n3. Visit the neighbours if not in *visited* and add them to the [[Queue]] and mark them as visited. \n4. Pop the topmost node in the [[Queue]].\n\nWe are visiting the nodes and adding them to the [[Queue]] and marking them visited. \nQ: Why are you adding to the [[Queue]] if you have visited it already? \nA: because I want to make sure I visit the neighbours of the node that I just visited. \n\n![[graph-bfs-example.excalidraw]]\n\n> [!note]-\n> **If a node is visited then the traversal doesn't visit it again it instead ignores it.**\n\nIf we map the path the traversal took as a tree ignoring the lookups of visited edges. Then we get this:\n```mermaid\ngraph TD;\n\tb --> a\n\tb --> f\n\ta --> e\n\tf --> c\n\tf --> g\n\tc --> d\n\tg --> h\n```\n\n> [!important]+\n> **The power of using BFS to traverse through a [[graphs]] is that it can easily and will always tell us the shortest way of getting from one node to another. You can validate it in the above [[trees]] that the traversal mapped.**\n\n> [!tip]-\n> **We will need an extra data structure to check the vertex is visited or not.**\n\n### Time Complexity\n\n$$\nO(V + E)\n$$\n\n$$O(Row \\ . \\ Col)$$\n\n**Why?** \nA: If we think of how we traverse for a single node. What we do is for each node we visit, we lookup its neighbouring nodes regardless of the fact that it was visited or is in the queue. Hence we we would be looking up each edge and also visiting each vertex hence the time complexity is the sum of them. \n\n> [!hint]+\n> O(V + E) is valid for any [[graph representations]] that have the exact edges. But in the case of [[graph representations#2D Grid or Matrix]] for which the complexity is O(Row . Col) in the worst case.\n\n\n> [!important]+\n> For an undirected graph, we would be visiting all vertices `V` and `2E` edges. For a directed [[graphs]], we would be visiting all vertices `V` and `E` edges. \n\n## Code\n\n### [[Matrix]]\n```python\nnum_rows, num_cols = len(matrx), len(matrix[0])\ndef get_neighbours(coord):\n\trow, col = coord\n\tdirections = [(0, 1), (0, -1), (1, 0), (-1, 0)]\n\tneighbours = []\n\tfor direction in directions:\n\t\tnext_row = row + direction[0]\n\t\tnext_col = col + direction[1]\n\t\tif 0 <= next_row < num_rows and 0 <= next_col < num_cols:\n\t\t\tneighbours.append((next_row, next_col))\n\treturn neighbours\n\ndef bfs(starting_node):\n\tq = deque([starting_node])\n\tvisited = set([starting_node])\n\twhile q:\n\t\tnode = q.popleft()\n\t\tfor neighbour in get_neighbours(node):\n\t\t\tif neighbour in visited:\n\t\t\t\tcontinue \n\t\t\t# Do stuff with the node if required\n\t\t\t# ...\n\t\t\tq.append(neighbour)\n\t\t\tvisited.add(neighbour)\n```\n\n### Other Representations\nThe `bfs` function remains the same. *get_neighbours()* is the function that changes cause that is where we determine the neighbours.",
+        "references": [
+            {
+                "title": "Going Broad In A Graph: BFS Traversal | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/going-broad-in-a-graph-bfs-traversal-959bd1a09255"
+            }
+        ]
+    },
+    {
+        "title": "Stack",
+        "related_notes": [
+            "Stack-Operations.excalidraw",
+            "Linked List",
+            "Stack-books.excalidraw",
+            "Arrays",
+            "Recursion",
+            "#^77c198 |Implementation",
+            "Queue",
+            "Queue",
+            "Recursion",
+            "Linked List",
+            "Arrays"
+        ],
+        "content": "# Stack\n\n## Summary\n- A stack is a abstract data type that follows `LIFO - Last In First Out`. \n\n### Idea\nStack literally means a stack of items. I remember in school when I used to submit books(stack of books) I always used to put my book in the middle because if mine is the last one on `top` then that book is the first one that is picked by the teacher.\n\n![[Stack-books.excalidraw]]\n\n> [!note]\n> Operations on stack occur only in one direction i.e at the `top`. Be it `push` or a `pop`, it always happens at the top.\n\n### Implementation\n\n^77c198\n\n- Just like [[Queue]], we can implement stack using [[Arrays]] or [[Linked List]].\n- We have the same problems as we have for [[Queue]] implementation using [[Arrays]].\n\t- *Since stack can grow infinitely without any upper limit*, [[Arrays]] eventually can't find a contagious memory of that size and hence it raises a `stack overflow exception`.\n\t- This is what happens when we have an infinite [[Recursion]].\n- In the case of a Singly [[Linked List]], we can add or remove elements from the `head node` which would always be O(1) time complexity. And we can always add a node as long as there is memory left (if not then there is a major memory problem).\n\n![[Stack-Operations.excalidraw]]\n\n### Functions\n1. *push:* add element to the top of stack. \n2. *pop:* remove element from the top of stack. \n3. *top (peek):* returns the value of top but doesn't pop it.\n4. *isEmpty:* check if stack is empty.\n5. *size:* returns size of stack.\n\n> [!example]\n> 1. undo / redo\n> 2. browser history\n> 3. call stacks\n\n> [!tip]\n> Stacks are used to implement *depth-first-search*.\n\n### Time complexity\n\n|Operation|Big-O|\n| | |\n|Top/Peek|O(1)|\n|Push|O(1)|\n|Pop|O(1)|\n|isEmpty|O(1)|\n|Search|O(n)|\n\n### Essential Qs\n- [Valid Parentheses](https://github.com/Srikar-V675/DSA-Problems/blob/21c0ba2329fb01ebd7bceb23f557611f06d4584f/Arrays%20%7C%20Strings/Easy/7.%20Valid%20Parentheses.md)\n- [Implement Queue using Stacks](https://github.com/Srikar-V675/DSA-Problems/blob/21c0ba2329fb01ebd7bceb23f557611f06d4584f/Queues/Easy/2.%20Implement%20Queue%20using%20Stacks.md)\n### Recommended Qs\n- [Implement Stack using Queue](https://github.com/Srikar-V675/DSA-Problems/blob/21c0ba2329fb01ebd7bceb23f557611f06d4584f/Queues/Easy/1.%20Implement%20Stack%20using%20Queue.md)\n\n\n## Tasks\n- [ ] Permanent zettels. \n- [ ] Explain [[#^77c198 |Implementation]] properly",
+        "references": [
+            {
+                "title": "Stack cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/stack/"
+            },
+            {
+                "title": "Stacks and Overflows. When I was first learning to code… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/stacks-and-overflows-dbcf7854dc67"
+            }
+        ]
+    },
+    {
+        "title": "directed acyclic graphs",
+        "related_notes": [
+            "directed acyclic graphs",
+            "trees",
+            "topological sorting",
+            "graphs",
+            "dependency graphs",
+            "trees",
+            "graphs depth first search",
+            "topological sorting",
+            "graphs",
+            "cyclic and acyclic graphs",
+            "dependency graphs"
+        ],
+        "content": "# DAG\n\nDAG stands for `Directed Acyclic Graphs`, as the name suggests these are a type of graph that has directed edges and doesn't contain any cycles. \n\n```mermaid\ngraph LR;\n\ta --> c\n\tb --> d\n\tc --> e\n\tc --> f\n\tc --> d\n\td --> f\n\te --> f\n\tf --> g\n```\n\nIf you've noticed in the above [[graphs]], the nodes have some kind of ordering. And this ordering is the reason why `DAGs` are famous and pretty common. \n\nThey have many use cases:\n1. Scheduling tasks which need to be processed in an order. \n2. To represent state machines for objects that don't have reversible states. \n3. [[dependency graphs]] are `DAGs` \n\nSince [[directed acyclic graphs]] have a specific ordering, this means we need an algorithm to sort through and order the nodes. This is where [[topological sorting]] comes. \n\n[[trees]] are naturally [[directed acyclic graphs]] since they don't have cycles and are actually undirected (but in perspective of CS it is considered directed).",
+        "references": [
+            {
+                "title": "Spinning Around In Cycles With Directed Acyclic Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/spinning-around-in-cycles-with-directed-acyclic-graphs-a233496d4688"
+            }
+        ]
+    },
+    {
+        "title": "mermaid diagrams docs",
+        "related_notes": [
+            "mermaid diagrams docs#Node Shape"
+        ],
+        "content": "# Mermaid Diagrams\n\n## Summary\nMermaid is a tool that let's you create diagrams and visualisations using text and code. It is pretty easy if we are used to markdown and I feel is a very helpful tool in my obsidian note-taking workflow.\n\n## Graph / Flowchart\n### Example\n```\ngraph TD;\n\tA --> B\n\tA --> C\n\tC --> C\n```\n```mermaid\ngraph TB;\n\tA --> B\n\tA --> C\n\tC --> C\n```\n\n### Node Shape \n**round edges:**\n```\nflowchart LR\n    id1(This is the text in the box)\n```\n```mermaid\nflowchart LR\n    id1(This is the text in the box)\n```\n**ovalish:**\n```\nflowchart LR\n    id1([This is the text in the box])\n```\n```mermaid\nflowchart LR\n    id1([This is the text in the box])\n```\n**database:**\n```\nflowchart LR\n    id1[(Database)]\n```\n```mermaid\nflowchart LR\n    id1[(Database)]\n```\n**circle:**\n```\nflowchart LR\n    id1((This is the text in the circle))\n```\n```mermaid\nflowchart LR\n    id1((This is the text in the circle))\n```\n\n### Links b/w Nodes\n**arrow link:**\n```\nflowchart LR\n    A-->B\n```\n```mermaid\nflowchart LR\n    A --> B\n```\n**no arrow link:**\n```flowchart LR\n    A B\n```\n```mermaid\nflowchart LR\n    A B\n```\n**text on link:**\n```\nflowchart LR\n    A-- text -->B\n```\n```mermaid\nflowchart LR\n    A-- text -->B\n```\n**dotted link:**\n```\nflowchart LR\n   A-.->B;\n```\n```mermaid\nflowchart LR\n   A-.->B;\n```\n**dotted link with text:**\n```\nflowchart LR\n   A-. text .-> B\n```\n```mermaid\nflowchart LR\n   A-. text .-> B\n```\n**thick link:**\n```\nflowchart LR\n   A ==> B\n```\n```mermaid\nflowchart LR\n   A ==> B\n```\n\n### Arrow Types\n**circle edge:**\n```\nflowchart LR\n    A --o B\n```\n```mermaid\nflowchart LR\n    A --o B\n```\n**cross-edge:**\n```\nflowchart LR\n    A --x B\n```\n```mermaid\nflowchart LR\n    A --x B\n```\n### Subgraphs\n```\nflowchart TB\n    c1-->a2\n    subgraph one\n    a1-->a2\n    end\n    subgraph two\n    b1-->b2\n    end\n    subgraph three\n    c1-->c2\n    end\n    one --> two\n    three --> two\n    two --> c2\n```\n```mermaid\nflowchart TB\n    c1-->a2\n    subgraph one\n    a1-->a2\n    end\n    subgraph two\n    b1-->b2\n    end\n    subgraph three\n    c1-->c2\n    end\n    one --> two\n    three --> two\n    two --> c2\n```\n\n\n## ER-Diagrams\n### Example \n```\n \ntitle: Order example\n \nerDiagram\n    CUSTOMER ||--o{ ORDER : places\n    ORDER ||--|{ LINE-ITEM : contains\n    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses\n```\n```mermaid\n \ntitle: Order example\n \nerDiagram\n    CUSTOMER ||--o{ ORDER : places\n    ORDER ||--|{ LINE-ITEM : contains\n    CUSTOMER }|..|{ DELIVERY-ADDRESS : uses\n```\n```\nerDiagram\n    CUSTOMER ||--o{ ORDER : places\n    CUSTOMER {\n        string name\n        string custNumber\n        string sector\n    }\n    ORDER ||--|{ LINE-ITEM : contains\n    ORDER {\n        int orderNumber\n        string deliveryAddress\n    }\n    LINE-ITEM {\n        string productCode\n        int quantity\n        float pricePerUnit\n    }\n```\n```mermaid\nerDiagram\n    CUSTOMER ||--o{ ORDER : places\n    CUSTOMER {\n        string name\n        string custNumber\n        string sector\n    }\n    ORDER ||--|{ LINE-ITEM : contains\n    ORDER {\n        int orderNumber\n        string deliveryAddress\n    }\n    LINE-ITEM {\n        string productCode\n        int quantity\n        float pricePerUnit\n    }\n```\n\n\n\n\n\n\n## Mindmap\n### Example \n```\n  root((mindmap))\n    Origins\n      Long history\n      Popularisation\n        British popular psychology author Tony Buzan\n    Research\n      On effectiveness<br/>and features\n      On Automatic creation\n        Uses\n            Creative techniques\n            Strategic planning\n            Argument mapping\n    Tools\n      Pen and paper\n      Mermaid\n```\n```mermaid\nmindmap\n  root((mindmap))\n    Origins\n      Long history\n      Popularisation\n        British popular psychology author Tony Buzan\n    Research\n      On effectiveness<br/>and features\n      On Automatic creation\n        Uses\n            Creative techniques\n            Strategic planning\n            Argument mapping\n    Tools\n      Pen and paper\n      Mermaid\n```\n### shapes \nrefer: [[mermaid diagrams docs#Node Shape]]\n**bang:**\n```\nmindmap\n    root))I am a bang((\n\t\tA\n```\n```mermaid\nmindmap\n    root))I am a bang((\n\t    A\n```\n**cloud:**\n```\nmindmap\n    root)I am a cloud(\n\t\tA\n```\n```mermaid\nmindmap\n    root)I am a cloud(\n\t    A\n```\n\n\n\n\n\n\n## Tasks\n- [ ] Further explore ER diagrams. refer: [Entity Relationship Diagrams | Mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)\n- [ ] Architecture diagrams. refer: [Architecture Diagrams Documentation (v11.1.0+) | Mermaid](https://mermaid.js.org/syntax/architecture.html)\n- [ ] state diagrams. refer: [State diagrams | Mermaid](https://mermaid.js.org/syntax/stateDiagram.html)",
+        "references": [
+            {
+                "title": "About Mermaid | Mermaid",
+                "link": "https://mermaid.js.org/intro/"
+            }
+        ]
+    },
+    {
+        "title": "level order traversal by level dry run",
+        "related_notes": [
+            "tree level order traversal#Iterative Code by Level",
+            "trees",
+            "tree level order traversal"
+        ],
+        "content": "# level order traversal by level dry run\n\n```mermaid\ngraph TD\nA(1) --> B(2)\nA --> C(3)\nB --> D(4)\nB --> E(5)\nC --> F(6)\nC --> G(7)\n```\n\n![[tree level order traversal#Iterative Code by Level]]\n\n*Iteration-0:*\n```\nq = [1]\nlevel = []\nres = []\n```\n\n*Iteration-1:*\n```\nq = [2, 3]\nlevel = [1]\nres = [ [1], ]\n```\n\n*Iteration-2:*\n```\nq = [4, 5, 6, 7]\nlevel = [2, 3]\nres = [ \n\t[1], \n\t[2, 3]\n]\n```\n\n*Iteration-3:*\n```\nq = []\nlevel = [4, 5, 6, 7]\nres = [ \n\t[1], \n\t[2, 3], \n\t[4, 5, 6, 7]\n]\n```",
+        "references": []
+    },
+    {
+        "title": "chaining",
+        "related_notes": [
+            "hash tables",
+            "Linked List",
+            "linear probing",
+            "hash functions",
+            "Chaining-Example.excalidraw",
+            "hash tables",
+            "Linked List",
+            "Arrays",
+            "linear probing",
+            "hash functions"
+        ],
+        "content": "# Chaining\n\n### Summary\nChaining is a ==collision resolution tactic== used in [[hash tables]]. It is a ==closed addressing tactic==. Unlike [[linear probing]] which utilises the other buckets if there is a collision, chaining ==implements a [[Linked List]] at the collision bucket to store the collisions==.\n\nWhen there is a collision with the bucket computed by the [[hash functions]], this method uses a [[Linked List]] at the collision bucket to store the collision values.\n\n![[Chaining-Example.excalidraw]]\n\n### Problems \n*Linear Search Time:* if most of the values belong to a single bucket then the ==search for a value becomes equal to or close to linear time==, which defeats the reason of having a [[hash tables]]\n\nUse *chaining* when we have a ==well-defined [[hash functions]] that distributes the values uniformly== making the search time average out to constant time.",
+        "references": [
+            {
+                "title": "Hash Table (Closed Addressing: Separate Chaining and Open Addressing: Linear Probing, Quadratic Probing, Double Hashing) - VisuAlgo",
+                "link": "https://visualgo.net/en/hashtable"
+            }
+        ]
+    },
+    {
+        "title": "types of trees",
+        "related_notes": [
+            "binary trees and binary search trees",
+            "trees",
+            "Interviews",
+            "tree depth traversals",
+            "trees",
+            "binary trees and binary search trees",
+            "tree level order traversal"
+        ],
+        "content": "# Types of Trees \n\n### Summary\nWhile [[trees]] can be of different shapes and sizes. The most prominent [[trees]] we will be working on in coding [[Interviews]] would be the [[binary trees and binary search trees]].\n\n![[binary trees and binary search trees]]\n\n> [!tip]-\n> **When a question involves a BST, the interviewer expects a solution that runs faster than O(n) i.e O(log n)**",
+        "references": [
+            {
+                "title": "How To Not Be Stumped By Trees. As soon as the data structure lightbulb… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/how-to-not-be-stumped-by-trees-5f36208f68a7"
+            }
+        ]
+    },
+    {
+        "title": "hash tables",
+        "related_notes": [
+            "hash functions | Hash Function",
+            "chaining",
+            "linear probing",
+            "Arrays",
+            "Linked List",
+            "Arrays",
+            "linear probing",
+            "hash functions",
+            "chaining",
+            "#^68cede  |Sample Questions",
+            "Strings"
+        ],
+        "content": "# Hash Tables\n\n## Summary\nIt is a ==data structure that maps keys to values and enabling O(1) lookup== by the key. It allows us to search for an item in an array in O(1) time which usually takes ==O(N) time for unsorted== array and ==O(log N) time for a sorted== array.\n\n## Detailed Explanation\n#### Scenario: \nLet's say we have a library of books and I want to search for a book, a traditional way would essentially be searching through all the books in library or if the books are sorted then we look in the right half and narrow it down. But isn't this super inconvenient, imagine having 1000 books and using these traditional ways to search for a book. The need for a data structure that allows us to access or search a book directly is needed -> O(1) access.\n\n#### Solution:\nA `hashmap` data structure that can help us do this. \n\nA hashmap has two main parts:\n> *[[Arrays]]* - used to store the data aka books\n   *[[hash functions | Hash Function]]* - used to create a mapping that decides where our data is\n\n\n**What makes a good hash table?**\n> Easy to compute hash function\n> Avoid collisions\n> Should use all input data and must return the same value for a given input\n\n#### Collision Resolution Tactics\nWe know we can't avoid collisions but we can efficiently handle them. We have 2 main types:\n\n**Open Addressing** - When an element has to be inserted, it examines the bucket for the input values, if that bucket is occupied then it uses some kind of ==probe sequence to find the next unoccupied slot in the table==.\n>  [[linear probing]]\n\n**Closed Addressing** - Implements a ==new data structure where if there is a collision then that data structure is extended== at that bucket (i.e Linked List).\n> [[chaining]]\n\n\n### Time Complexity\n\n|Operation|Big-O|Note|\n| | | |\n|Access|N/A|Accessing not possible as the hash code is not known|\n|Search|O(1)*||\n|Insert|O(1)*||\n|Remove|O(1)*||\n_* This is the average case, but in interviews we only care about the average case for hash tables._\n\n### Sample questions\n\n^68cede\n\nDescribe an implementation of a least-used cache, and big-O notation of it.\n\nA question involving an API's integration with hash map where the buckets of hash map are made up of linked lists.\n\n### Essential Qs\n[2Sum](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/6.%202Sum.md#L4)\n[Ransom Note](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/11.%20Ransom%20Note.md#L4)",
+        "references": [
+            {
+                "title": "Hash table cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/hash-table/#introduction"
+            },
+            {
+                "title": "Taking Hash Tables Off The Shelf. Truth time: learning about theoretical… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/taking-hash-tables-off-the-shelf-139cbf4752f0"
+            }
+        ]
+    },
+    {
+        "title": "topological sorting using dfs",
+        "related_notes": [
+            "graphs depth first search",
+            "topological sorting",
+            "Stack",
+            "directed acyclic graphs",
+            "graphs depth first search",
+            "topological sorting",
+            "graphs"
+        ],
+        "content": "# topological sorting using dfs\n\nWe know that [[topological sorting]] is nothing but making sure we visit a node only when we know we have visited every single node that leads up to it. \n\nSince [[graphs depth first search]] is very good at following a path and when it reaches a leaf node it backtracks. We can take this mechanism to our advantage. We can use a stack to store the ordering in reverse order. Where we push to stack only when we know every neighbouring node of the cur node is visited or it is the leaf node. \n\n```python\nvisited = set()\nstack = []\n\ndef dfs(node):\n\tvisited.add(node)\n\tfor neighbour in get_neighbours(node):\n\t\tif neighbour not in visited:\n\t\t\tdfs(neighbour)\n\t# after visiting all its neighbours we can push to stack. \n\tstack.append(node)\n\n# make sure we visit all paths available\nfor node in graph:\n\tif node not in visited:\n\t\tdfs(node)\n\nprint(\"Ordering: \", stack[::-1])\n```\n\nWe use the `for loop` to visit the nodes because there can be multiple nodes (like root nodes with no edge leading up to it). To counter this we need to make sure we don't miss any node. \n\nThe actual ordering is the reverse of the `stack` because notice that in [[graphs depth first search]] we are reaching the deepest level and then backtracking. We are essentially going deep and then backtracking hence we are constructing the [[topological sorting]] in reverse i.e from the leaf nodes. \n\n> [!tldr]-\n> **See it this way, what does [[graphs depth first search]] do? \n> A: It follows a path and backtracks when it visits a node that is already visited \n> In the path it takes what is the last node it visits? \n> A: A leaf node (or node that has visited all its neighbours). \n> What is the position of this node in [[topological sorting]] ?\n> A: It is one of the last nodes in the order to be visited hence we are constructing the [[topological sorting]] in reverse. **",
+        "references": [
+            {
+                "title": "Perplexity | Topological Sorting using dfs",
+                "link": "https://www.perplexity.ai/search/topological-sorting-using-dfs-p9IM5VswTLGwYovBZxkp.Q"
+            }
+        ]
+    },
+    {
+        "title": "Tim Sort",
+        "related_notes": [
+            "Binary Insertion Sort",
+            "Quick Sort",
+            "Tim-Sort-Basic-Example.excalidraw",
+            "Tim-sort-example.excalidraw",
+            "Merge Sort",
+            "Big-O Notation",
+            "Binary Insertion Sort",
+            "Arrays",
+            "Recursion",
+            "Searching & Sorting",
+            "Merge Sort",
+            "Strings"
+        ],
+        "content": "# Tim Sort\n \n## Summary\n- Tim sort is a hybrid, stable sorting algorithm designed by Tim Peters in 2002, it combines merge and insertion sort to efficiently sort.\n\n### Detailed Explanation\n\n- Let's try to understand why the need for a new sorting algorithm was there?\n- Before we try to get to the point, we need to know that in [[Big-O Notation]] there is a catch i.e it denotes only the highest degree and ignores constants.\n- While [[Merge Sort]], [[Quick Sort]], and Heap Sort are all sorting algos that execute in O(n.log n) time they have differed constants which can make one better than the other in certain situations.\n- **Time Complexity:** O(C. n. log n + ....)\n\t- Where `C` is:\n\t\t- high for [[Quick Sort]] -> Cq = left, right, pivot... but it has `locality of reference`\n\t\t- low for [[Merge Sort]] but it needs O(n) extra auxiliary space\n\t\t- high for Heap Sort, even though it needs no extra space but it has no `locality of reference` because the compiler doesn't know which index it will next access\n\n> [!info]\n> Among sorting techniques that take `O(n^2` time, insertion sort is an algo that has:\n> - (Ci. n^2) < (C. n.log n) for smaller input size usually between 32 to 64.\n> - Hence Insertion sort is used in Tim Sort by taking this into account.\n\n### Idea\n- The idea of Tim Sort is to combine the power of `insertion sort` for small data and the merging of [[Merge Sort]].\n- Let's take this progressively, I'll take examples or explain concepts from the basic overview of Tim sort to detailed overview.\n- The basic idea of Tim sort is:\n\t- **Step-1:** split the data structure into equal size chunks of size 32 to 64. Chunks -> Runs\n\t- **Step-2:** chunks are sorted using `insertion sort` (as `insertion sor`t is fast for smaller sizes between 32 to 64)\n\t- **Step-3:** these sorted chunks are now recursively merged like in [[Merge Sort]].\n- The advantage is that when using [[Merge Sort]] we are getting down the splits into size 2 or 1 but in the case of splitting them into equal chunks of 64 (example) we can reduce the tree depth by five levels because 64 = 2^6.\n\n![[Tim-Sort-Basic-Example.excalidraw]]\n\n- But this is still not fully efficient, so Tim Peters came up with a new idea where he will intelligently split the chunks into sizes between 32 to 64 instead of directly doing it which cause some localities to be missed.\n- At the same time he came across the idea of splitting into chunks by sorting it by using [[Binary Insertion Sort]].\n\n![[Tim-sort-example.excalidraw]]\n\n- In this example, we have first divided the array into chunks by using [[Binary Insertion Sort]] and then recursively merged them with the [[Merge Sort]] logic.\n- Why is this better than splitting into fixed chunk sizes because it decreases the number of chunks by combining subarrays that follow increasing or decreasing order making it easy to group chunks that have most elements in order. \n- And it makes sure to take advantage of [[Binary Insertion Sort]] which is optimal for the defined chunk size (32 - 64).\n- This ultimately decreases the number of chunks to merge and also the tree depth.\n- If we had split the array it equal chunks of size 3 then we would have got 4 but by using [[Binary Insertion Sort]] we got only 3.\n\n### Time Complexity\n\n| **Algorithm** | **Time Complexity** |             |             |\n|     - |       - |    -- |    -- |\n|               | Best                | Average     | Worst       |\n| [[Quick Sort]]    | Ω(n*log(n))         | θ(n*log(n)) | O(n^2)      |\n| [[Merge Sort]]    | Ω(n*log(n))         | θ(n*log(n)) | O(n*log(n)) |\n| Tim Sort      | Ω(n)                | θ(n*log(n)) | O(n*log(n)) |",
+        "references": [
+            {
+                "title": "The FASTEST sorting algorithm: Part 1 - TimSort - YouTube",
+                "link": "https://www.youtube.com/watch?v=emeME__917E"
+            },
+            {
+                "title": "The FASTEST sorting algorithm: Part 2 - Binary Insertion Sort - YouTube",
+                "link": "https://www.youtube.com/watch?v=6DOhQyqAAvU"
+            },
+            {
+                "title": "Tim Sort - javatpoint",
+                "link": "https://www.javatpoint.com/tim-sort"
+            },
+            {
+                "title": "Tim Sort. Introduction and Background | by Muskan Vaswan | Medium",
+                "link": "https://muskanvaswan.medium.com/tim-sort-48bffd550a9b"
+            },
+            {
+                "title": "TimSort - Data Structures and Algorithms Tutorials - GeeksforGeeks",
+                "link": "https://www.geeksforgeeks.org/timsort/"
+            }
+        ]
+    },
+    {
+        "title": "bubble sort",
+        "related_notes": [
+            "Arrays",
+            "Searching & Sorting",
+            "Arrays"
+        ],
+        "content": "# Bubble Sort\n\n## Captures\nIt is one of the most common sorting techniques that is taught first when you are learning about sorting. It is also the most intuitive and simple way that comes to mind when you think of sorting. \n\nIn bubble sort, we check the `i and i+1` element in an [[Arrays]] to see if it in the order (ascending or descending) and swap it if it is not in order. \n\n```\n[5, 4, 1, 2, 3]\nwe swap 5 and 4 because there are not in ascending order. \n```\n\nWe need to repeat this process of checking neighbour elements for a maximum of the [[Arrays]] size.\n\nEvery time we finish one iteration the greatest element in the array (for ascending) will be put in its position which is the last index. So every iteration the array gets sorted from the end and hence we need `n` iterations if there are `n` elements to sort. \n\nYou may not need `n` iterations for every [[Arrays]] because sometimes an [[Arrays]] is sorted partially and this helps the algorithm sort the whole [[Arrays]] way earlier. We can detect this by checking if there was any swap in the inner loop while checking neighbouring elements. If there was no swaps then that means that the [[Arrays]] is sorted. \n\n## Code\n```python\ndef bubble(arr):\n\tfor i in range(n):\n\t\tswapped = False # to check if arr is sorted early on.\n\t\tfor j in range(n-i-1): # not consider the elements at the end that got sorted.\n\t\t\tif arr[j] > arr[j+1]:\n\t\t\t\tswapped = True\n\t\t\t\tarr[j], arr[j+1] = arr[j+1], arr[j]\n\t\tif not swapped:\n\t\t\tbreak # array is sorted early on.\n\narr = [5, 4, 1, 2, 3] # sorted: [1, 2, 3, 4, 5]\nbubble(arr)\n```",
+        "references": []
+    },
+    {
+        "title": "tree depth traversals",
+        "related_notes": [
+            "Stack",
+            "trees",
+            "tree depth traversal use cases",
+            "trees",
+            "Recursion",
+            "tree depth traversal use cases",
+            "Searching & Sorting",
+            "binary trees and binary search trees"
+        ],
+        "content": "# Tree Depth Traversals\n\n### Summary\nSince [[trees]] are unstructured data structures and unique. The way we can access the nodes is by traversing in a unique way, one such way is to traverse by depth. \n\nThe overall algorithm of tree depth traversals more or so remains the same, but the order in which we process the nodes can be different.\n\n> [!important]-\n> **Depth Traversal involves using a [[Stack]] because the node that entered last is the one that must be popped out.**\n\n### Types of Depth Traversals \n\n![Tree](https://proxy-prod.omnivore-image-cache.app/0x0,s6lOWUFJdazs8TNbiYpEyVc7M6YGLN1unOG736M4S85I/https://upload.wikimedia.org/wikipedia/commons/5/5e/Binary_tree_v2.svg)\n\n*Pre-Order:* root -> left -> right\nex: 1, 7, 2, 6, 5, 11, 9, 9, 5\n*In-Order:* left -> root -> right\nex: 2, 7, 5, 6, 11, 1, 9, 5, 9\n*Post-Order:* left -> right -> root\nex: 2, 5, 11, 6, 7, 5, 9, 9, 1\n\n> [!important]-\n> **In-Order Traversal of a binary tree is insufficient to uniquely serialise a tree. Pr-order or post-order traversal is required.**\n\n### Recursive Code\n\n```python\ndef depthTraverse(root):\n\t# Base case: when node is None\n\tif not root:\n\t\treturn\n\tprint(root.val) # Pre-Order\n\tdepthTraverse(root.left)\n\t# print(root.val) # In-Order\n\tdepthTraverse(root.right)\n\t# print(root.val) # Post-Order\n```\n\n> [!use cases]-\n> [[tree depth traversal use cases]]\n\n### Tasks \n- [ ] Implement each order traversal iteratively as a bonus.",
+        "references": [
+            {
+                "title": "Mastering Binary Tree Traversals: A Comprehensive Guide | by Adam DeJans Jr. | Plain Simple Software | Medium",
+                "link": "https://medium.com/plain-simple-software/mastering-binary-tree-traversals-a-comprehensive-guide-d7203b1f7fcd"
+            }
+        ]
+    },
+    {
+        "title": "Strings",
+        "related_notes": [
+            "Arrays",
+            "Arrays"
+        ],
+        "content": "# Strings\n\n### Summary\nVery similar to [[Arrays]] because they are sequence of characters while [[Arrays]] are sequence of a single data type.\n\n### Common Things\nCommon `data structures` for looking up strings\n\t- Trie/Prefix tree\n\t- Suffix tree\n\nCommon `algorithms` for searching substrings\n\t- Rabin-Karp Algorithm\n\t- KMP\n\n### Time Complexity\n| Operation | Big-O |\n|     |  -- |\n| Access    | O(1)  |\n| Search    | O(n)  |\n| Insert    | O(n)  |\n| Remove    | O(n)  |\n\n#### Operations Involving Another String\n\n| Operation                                       | Big-O    | Note                                                                                                                                                                                          |\n|                -- |   -- |                                                                 |\n| Find substring                                  | O(n.m)   | This is the most naive case. There are more efficient algorithms for string searching such as the [KMP algorithm](https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm) |\n| Concatenating strings                           | O(n + m) |                                                                                                                                                                                               |\n| Slice                                           | O(m)     |                                                                                                                                                                                               |\n| Split (by token)                                | O(n + m) |                                                                                                                                                                                               |\n| Strip (remove leading and trailing whitespaces) | O(n)     |                                                                                                                                                                                               |\n\n### Techniques\nCounting characters\nString of unique characters\nAnagram\nPalindrome\n\n### Essential Qs\n[Valid Anagram](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/9.%20Valid%20Anagram.md#L4)\n[Valid Palindrome](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/10.%20Valid%20Palindrome.md#L4)\n[Longest Substring without repetitions](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/10.%20Longest%20Substring%20without%20repetitions.md#L4)",
+        "references": [
+            {
+                "title": "String cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/string/"
+            }
+        ]
+    },
+    {
+        "title": "topological sorting using khan's algo",
+        "related_notes": [
+            "topological sorting using khan's algo",
+            "trees",
+            "graphs breadth first search",
+            "Queue",
+            "topological sorting using khan's algo#^6e873e",
+            "topological sorting",
+            "graphs",
+            "directed acyclic graphs",
+            "trees",
+            "graphs breadth first search",
+            "Queue",
+            "topological sorting",
+            "graphs"
+        ],
+        "content": "# topological sorting using khan's algo\n\nKhan's algo for [[topological sorting]] implements a mechanism that is similar to [[graphs breadth first search]]. They may not be similar completely but they use the core mechanism. \n\nWe should be aware of these concepts of directed graphs to understand Khan's algo better:\n1. *in-edge:* an edge pointing to or coming into(\"in\") the node.\n2. *out-edge:* an edge pointing away or going \"out\" from the node. \n3. *in-degree:* the count of *in-edges* coming into the node. \n4. *out-degree:* the count of *out-edges* going away from the node. \n\nThe *in-edge* and *in-degree* are important concepts here because we know [[topological sorting]] order depends on it. If a node has *in-degree* of 0 then we know this is the node that we visit first.  ^6e873e\n\nIf we take this in the context of [[trees]], we can see that the order for [[topological sorting]] would be root node first and then the nodes in the next level and goes on... \n\nwe can notice that whatever we mapped above is similar to how [[graphs breadth first search]] works, since [[graphs]] have more freedom compared to [[trees]], [[graphs breadth first search]] alone can't help us. \n\nHence khan's algo combines the [[graphs breadth first search]] and the in-degree concepts together. \n\n*Q:* How does khan's algo do it? \n*A:* We know this [[topological sorting using khan's algo#^6e873e]], what we also should know is that once we have visited the node with *in-degree* 0, we can decrement all its neighbours in-degree by 1 and remove the node. As we do this one-by-one we get the right order. \n\nHow can we do this? This is where the [[graphs breadth first search]] comes. We need to use a [[Queue]] to keep track of the nodes that have in-degree 0, this way we can visit this node add it to the order and then decrement the in-degree of its neighbours and remove it. \n\n*Steps:*\n1. compute the *in-degree* of all the nodes. add the nodes that have *in-degree* 0 to queue to visit them. \n2. pop each node from the [[Queue]], decrement the *in-degree* of its neighbours by 1. if any of the neighbours *in-degree* becomes 0 add it to the [[Queue]]\n3. do this until [[Queue]] is empty.\n\n> [!tip]- bfs vs khan's algo \n> In [[graphs breadth first search]] we add all nodes to the [[Queue]] as we traverse, but in [[topological sorting using khan's algo]] we add only the nodes that have *in-degree* 0 to the [[Queue]].\n\n```python\ndef find_indegree(graph):\n\tindegree = {node: 0 for node in graph}\n\tfor node in graph:\n\t\tfor neighbour in get_neighbours(node):\n\t\t\tindegree[neighbour] += 1\n\treturn indegree\n\ndef topo_sort(graph):\n\tq = deque()\n\tres = []\n\tindegree = find_indegree(graph)\n\tfor node in indegree:\n\t\tif indegree[node] == 0:\n\t\t\tq.append(node)\n\twhile q:\n\t\tnode = q.popleft()\n\t\tres.append(node) # node with in-degree 0\n\t\tfor neighbour in get_neighbours(node):\n\t\t\tindegree[neighbour] -= 1\n\t\t\tif indegree[neighbour] == 0:\n\t\t\t\tq.append(neighbour)\n\treturn res id len(res) == len(graph) else None\n```",
+        "references": [
+            {
+                "title": "Topological Sort Introduction",
+                "link": "https://algo.monster/problems/topo_intro"
+            }
+        ]
+    },
+    {
+        "title": "linear probing",
+        "related_notes": [
+            "hash tables",
+            "Linear-Probing-Example.excalidraw",
+            "hash functions",
+            "chaining",
+            "Arrays",
+            "hash tables",
+            "hash functions"
+        ],
+        "content": "# Linear Probing\n\n### Summary\nLinear probing is a ==collision resolution tactic== used in [[hash tables]]. It is an open addressing tactic. If there is a collision then the ==algorithm searches for the next free bucket linearly==.\n\nA collision occurs when the [[hash functions]] generates the same bucket for two keys. To tackle this we can use linear probing, when a collision occurs the algorithm searches for the next unoccupied bucket linearly. \n\n> If a unoccupied bucket is not found and we have reached the end then the ==probe cycles to the first slot== to search for the unoccupied slot.\n\n![[Linear-Probing-Example.excalidraw]]\n### Problems \n*Clustering:* occurs when we have lots of keys that ==belong to the same hash bucket== according to the [[hash functions]]. Because of this the slots after the actual bucket is filled with values.\n\nUse *linear probing* when we have a ==well-defined [[hash functions]] and a big hash table== to accommodate collisions. \n\nDo not use *linear probing* if you have many keys that belong to the same hash bucket.",
+        "references": [
+            {
+                "title": "Hash Table (Closed Addressing: Separate Chaining and Open Addressing: Linear Probing, Quadratic Probing, Double Hashing) - VisuAlgo",
+                "link": "https://visualgo.net/en/hashtable"
+            }
+        ]
+    },
+    {
+        "title": "joins in sql",
+        "related_notes": [],
+        "content": "# Joins in SQL\n\n### Summary\nJoins in SQL are a way of combining tables that are related by a primary & foreign key relationship or by common rows. It helps maintain the data integrity, schema and minimise redundancy. \n\n### Types \n**Inner Join:** result-set contains only the rows that have matching values in both left and right tables.\n\n**Left Join:** result-set contains all the rows in left table and matching rows of right table. Unmatched rows will contain *NULL*.\n\n**Right Join:** result-set contains all the rows in right table and matching rows of left table. Unmatched rows will contain *NULL*.\n\n**Full Join:** result-set contains a combination of rows in left table and right table. Unmatched rows will contain *NULL*.\n\n**Natural Join:** combines two tables based on common columns in the two tables. The common columns are not specified but identified by SQL and the matching rows of the tables are combined.\n\n\n## Tasks\n- [ ] Further exploration on Joins   \n- [ ] Explore syntax of joins and natural joins",
+        "references": [
+            {
+                "title": "SQL Joins (Inner, Left, Right and Full Join)",
+                "link": "https://www.geeksforgeeks.org/sql-join-set-1-inner-left-right-and-full-joins/"
+            }
+        ]
+    },
+    {
+        "title": "learning from interview rejections",
+        "related_notes": [
+            "Interviews",
+            "04-Atlas/DSA",
+            "Interviews",
+            "Job Prep"
+        ],
+        "content": "# Interview Rejections\n\n## Summary\nDon't feel dejected about [[Interviews]], things go bad very often and often times they are not your mistake that was the reason. There can be several instances of why it went wrong but make sure you learn from your mistakes and rejections.\n\n## Captures\nReferrals may get you the interview but not the job offer, keep this in mind as long as you are applying for jobs. \n\nMake sure you are rested well before the [[Interviews]], cause interviews at big tech companies can be exhausting. \n\nSometime rejections can tell you the right field that you are suited to work for. Maybe you were not suited for mobile dev and that's the reason you got rejected. \n\nTake your rejections in a positive way, they can be saviours in disguise. As the writer of this blog experienced.\n> He was rejected from a company and this company's stocks dropped 75% in the next 6 months. Hard Luck? ig yeah cause he dodges a bullet that could have given him some troubles.\n\n> [!quote]+\n> \"Sometimes the interviewer fails you for reasons beyond your control and you need to take that signal and be grateful that you didn’t get hired at that company\"",
+        "references": []
+    },
+    {
+        "title": "tree level order traversal",
+        "related_notes": [
+            "Linked List",
+            "Arrays",
+            "level order traversal dry run",
+            "Queue",
+            "level-order-traversal-example.excalidraw",
+            "level order traversal by level dry run",
+            "binary trees and binary search trees",
+            "trees",
+            "level order traversal by level dry run",
+            "level order traversal dry run"
+        ],
+        "content": "# Level Order Traversal  \n\n### Summary\n*Level Order Traversal* as the name suggests, we traverse the tree by visiting every node in each level. We always go from left to right and hence it is also called breadth first search. \n\n> [!important]-\n> **Level Order Traversal involves using a [[Queue]] because first node that enters is the first node to come out.**\n> \n\n![[level-order-traversal-example.excalidraw]]\n\n### Iterative Code\n\n```python\nq = deque()\nq.append(root)\nwhile q:\n\tnode = q.popleft()\n\tprint(node.val)\n\tif node.left:\n\t\tq.append(node.left)\n\tif node.right:\n\t\tq.append(node.right)\n```\n\n> *Check this out:* [[level order traversal dry run]]\n\n### Iterative Code by Level \n\n```python\nq = dequeu()\nq.append(root)\nres = []\nwhile q:\n\tlevel = []\n\tfor _ in range(len(q)): # len(q) = no. of root nodes at that level\n\t\tnode = q.popleft()\n\t\tlevel.append(node.val)\n\t\tif node.left:\n\t\t\tq.append(node.left)\n\t\tif node.right:\n\t\t\tq.append(node.right)\n\tres.append(level)\nprint(res) # prints each levels nodes.\n```\n\n> *Check this out:* [[level order traversal by level dry run]]\n\n### Use Cases\n*Serialisation:* serialising a binary tree into a linear data structure like [[Arrays]] or [[Linked List]]. \n\n*Find min depth:* first leaf node encountered represents the min depth of the tree because we go level by level. \n\n*Tree modification:* of all nodes at a certain level of binary tree.",
+        "references": []
+    },
+    {
+        "title": "acid properties in dbms",
+        "related_notes": [
+            "acid properties in dbms.png"
+        ],
+        "content": "# ACID Properties\n\n## Summary\n\nACID properties refers to properties of transactions and its management in DBMS.\n\n**Transaction:** A single logical or atomic unit of work that accesses the DB and possibly modifies it. It uses read and write operations to access data in DBs.\n\n![[acid properties in dbms.png]]\n\n### Tasks\n\n- [ ] Further exploration on ACID properties",
+        "references": [
+            {
+                "title": "ACID Properties in DBMS - GeeksforGeeks",
+                "link": "https://www.geeksforgeeks.org/acid-properties-in-dbms/"
+            }
+        ]
+    },
+    {
+        "title": "trees",
+        "related_notes": [
+            "tree depth traversals",
+            "Linked List",
+            "Recursion",
+            "tree level order traversal",
+            "recursive-subtree.excalidraw",
+            "types of trees",
+            "tree-terms.excalidraw",
+            "trees#Terms",
+            "tree depth traversals",
+            "Linked List",
+            "Recursion",
+            "tree level order traversal",
+            "Searching & Sorting",
+            "binary trees and binary search trees",
+            "balanced vs unbalanced trees#Balanced vs Unbalanced",
+            "types of trees"
+        ],
+        "content": "# Trees\n\n## Summary\nTrees are abstract non-sequential data structures that are really just a bunch of nodes and links that are connected to one another.\n\ntrees are undirected and connected acyclic graphs, they are acyclic because they do not contain cycles or loops. \n\ntrees are a recursive data structure because each node is a root node of its own subtree. Hence [[Recursion]] is a useful technique for traversal of a tree.\n\n![[recursive-subtree.excalidraw]]\n\n## Terms\n*Root:* the parent of all nodes that is at the top of the tree.\n*link/edges:* are the connections between 2 nodes.\n*child:* a node that has a parent, all nodes are child except the root.\n*parent:* a node that has children, all nodes except leaf nodes.\n*siblings:* nodes that are children of the same node.\n*internal:* any node that has a child node, all parent nodes.\n*leaf:* a node that has no child.\n\n![[tree-terms.excalidraw]]\n\n## Characteristics\n> If a tree has n nodes then it will always have (n-1) edges/links. Why? because there is no link connecting to the root node.\n\n> Trees contain smaller trees within themselves often referred to as *subtrees*.\n\n> [!note]\n> *Depth of a node:* how far away is the node from the root of the tree?\n> *Height of a node:* how far is this node from the farthest away leaf? (Remember: we are turning the tree upside down in CS, hence height is determined this way.)\n\n> [!important]+\n> [[types of trees]]\n\n> [!tip]-\n> **Look out for very skewed trees like a [[Linked List]]**\n\n### Traversals \n[[tree depth traversals]]\n[[tree level order traversal]]\n\n### Tasks \n- [ ] Self-balancing binary trees. don't forget.",
+        "references": [
+            {
+                "title": "Tree cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/tree/"
+            },
+            {
+                "title": "Leaf It Up To Binary Trees. Most things in software can be broken… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/leaf-it-up-to-binary-trees-11001aaf746d"
+            },
+            {
+                "title": "How To Not Be Stumped By Trees. As soon as the data structure lightbulb… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/how-to-not-be-stumped-by-trees-5f36208f68a7"
+            },
+            {
+                "title": "Mastering Binary Tree Traversals: A Comprehensive Guide | by Adam DeJans Jr. | Plain Simple Software | Medium",
+                "link": "https://medium.com/plain-simple-software/mastering-binary-tree-traversals-a-comprehensive-guide-d7203b1f7fcd"
+            }
+        ]
+    },
+    {
+        "title": "level order traversal dry run",
+        "related_notes": [
+            "tree level order traversal#Iterative Code",
+            "trees",
+            "tree level order traversal"
+        ],
+        "content": "# Level Order Traversal Dry Run\n\n```mermaid\ngraph TD\nA(1) --> B(2)\nA --> C(3)\nB --> D(4)\nB --> E(5)\n```\n\n![[tree level order traversal#Iterative Code]]\n\n*Iteration-0:*\n```\nq = [1]\nres = None\n```\n\n*Iteration-1:*\n```\nq = [2, 3]\nres = 1\n```\n\n*Iteration-2:*\n```\nq = [3, 4, 5]\nres = 1, 2\n```\n\n*Iteration-3:*\n```\nq = [4, 5]\nres = 1, 2, 3\n```\n\n*Iteration-4:*\n```\nq = [5]\nres = 1, 2, 3, 4\n```\n\n*Iteration-5:*\n```\nq = []\nres = 1, 2, 3, 4, 5\n\nends because q is empty\n```",
+        "references": []
+    },
+    {
+        "title": "ml advice from experts",
+        "related_notes": [],
+        "content": "# ML Advice \n\n[00:28](https://www.youtube.com/watch?t=28&v=uyOMOIEIRMI)\nPeople that can debug ml algorithms very good are easily 10x or 100x faster at getting something to work. \n\n[01:07](https://www.youtube.com/watch?t=67&v=uyOMOIEIRMI)\nYou can't learn programming by watching a tutorial, you can learn it when you build something that was genuinely a problem you faced. \n\n[01:58](https://www.youtube.com/watch?t=118&v=uyOMOIEIRMI)\nDon't be afraid to get your hands dirty. If there is some problem or error try to figure it out by yourself, do not google or look into resources. Spend that 5, 10 or 15 hours and you'll learn a lot.\n\n[02:19](https://www.youtube.com/watch?t=139&v=uyOMOIEIRMI)\nCultivate a habit of reading research papers, not just 1 or 2 but 1 or 2 every week. After a few month or years you've read enough to have learnt a lot.\n\n[04:07](https://www.youtube.com/watch?t=247&v=uyOMOIEIRMI)\nWhen you have a choice to create something, always go for creation. You'll learn loads from it. \n\n[05:55](https://www.youtube.com/watch?t=355&v=uyOMOIEIRMI)\nKnow yourself. Figure out how you work, what are the times that you study well? Test yourself in various scenarios and try to improve on your shortcomings. Just like how you lately realised that you talk first and think/regret later.",
+        "references": []
+    },
+    {
+        "title": "Stability of Sorting Algorithms",
+        "related_notes": [
+            "Sorting-Stability.excalidraw",
+            "Searching & Sorting"
+        ],
+        "content": "# Stability of Sorting Algorithms\n\n## Summary\nRefers to whether the sorting algorithm follows the original ordering of elements in the data structure. \n> [!example]\n> if we have two 4's in an array that is green and red, if the green comes before red in original array and this follows in the sorted array then it is Stable algorithm else Unstable algorithm.<br>\n> ![[Sorting-Stability.excalidraw]]",
+        "references": [
+            {
+                "title": "Sorting Out The Basics Behind Sorting Algorithms | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/sorting-out-the-basics-behind-sorting-algorithms-b0a032873add"
+            }
+        ]
+    },
+    {
+        "title": "Quick Sort",
+        "related_notes": [
+            "Merge Sort",
+            "Quick Sort vs Merge Sort",
+            "Quick Sort Example",
+            "Arrays"
+        ],
+        "content": "",
+        "references": []
+    },
+    {
+        "title": "tree depth traversal use cases",
+        "related_notes": [
+            "tree depth traversals",
+            "post-order-dependency-example.excalidraw",
+            "trees",
+            "Trees",
+            "binary trees and binary search trees",
+            "tree depth traversals",
+            "trees",
+            "binary trees and binary search trees",
+            "Searching & Sorting"
+        ],
+        "content": "# Depth Traversal Use cases\n\n### Summary\nWe know [[tree depth traversals]] have different ordering and each of these ordering have their own unique use cases that help us for efficient operations.\n\n### Pre-Order *root -> left -> right*\n*Tree Copying:* When copying [[trees]] we would like to visit the root nodes first and then left and right nodes hence pre-order traversal helps.\n\n*Evaluating Prefix Expressions*\n\n*Creating Prefix Notation:* converting binary tree to prefix notation.\n\n*Directory Structure:* when representing directory structure as a tree we would like to list the folders before the files.\n\n### In-Order *left -> root -> right*\n\n> [!tip]-\n> **In-Order is closely related to [[binary trees and binary search trees]]**\n\n*Sorted Output:* to get the elements in sorted order in a binary search tree. \n\n*BST Validation:* validate whether all nodes in a BST follow the rule of BST. \n\n*Finding Kth smallest/largest element* \n\n### Post-Order *left -> right -> root*\n\n> [!tip]-\n> **Post-Order is closely related to dependency management.**\n\n*Tree Deletion:* to safely delete a tree we need to first delete its children and then the root to avoid dangling nodes.\n\n*Postfix Expression [[Trees]]*\n\n*Dependency Resolution:* situations where dependencies must be resolved before executing a task (node). \n\n![[post-order-dependency-example.excalidraw]]",
+        "references": [
+            {
+                "title": "Mastering Binary Tree Traversals: A Comprehensive Guide | by Adam DeJans Jr. | Plain Simple Software | Medium",
+                "link": "https://medium.com/plain-simple-software/mastering-binary-tree-traversals-a-comprehensive-guide-d7203b1f7fcd"
+            }
+        ]
+    },
+    {
+        "title": "graphs",
+        "related_notes": [
+            "trees",
+            "graphs",
+            "topological sorting using khan's algo",
+            "directed acyclic graphs",
+            "trees",
+            "graphs depth first search",
+            "types of graph edges",
+            "graphs breadth first search",
+            "graph representations",
+            "topological sorting",
+            "topological sorting using dfs"
+        ],
+        "content": "# Graphs \n\n## Summary\nGraphs is an abstract data structure derived from mathematics, it is a set of objects (nodes or vertices) where there can be edges that connect these nodes or vertices. \n\nMathematical definition of a graph:\n$$\nG = (V, \\ E)\n$$\n\nEdges can be directed, undirected and can also have weights. [[trees]] are undirected and acyclic graphs. [[trees]] can be considered as a subset of graphs. \n\n> [!quote]+\n> \"A tree will always be a graph, but not all graphs will be trees.\"\n\n> [!info]-\n> [[trees]] have a set of rules that need to be followed to make them a tree, while [[graphs]] don't have any of these rules, the one and only rule is there are nodes and there are edges that connect these nodes. [[graphs]] are like the pirates and [[trees]] are like the marines from the one piece world.\n\nGraphs are used to represent relationships between objects (nodes or vertices) like social media following, distance between locations etc\n\n```mermaid\n \ntitle: Facebook Friends Graph \n \ngraph LR;\n\tSrikar   Vignesh\n\tSrikar   Shasha\n\tSrikar   Murthy\n\tMurthy   Shasha\n\tVignesh   Trupthi\n\tShasha   Trupthi\n```\n\n```mermaid\n \ntitle: Twitter Following Graph \n \ngraph LR;\n\tSrikar --> Weeknd\n\tSrikar --> Neetcode\n\tSrikar --> Vignesh \n\tVignesh --> Srikar\n```\n\n## Tasks\n- [x] Topological sorting ✅ 2024-10-13\n- [ ] Dijkstra's \n- [ ] Types of graphs \n- [x] DFS, BFS, Topological sorting, dijikstra's code. ✅ 2024-10-13",
+        "references": [
+            {
+                "title": "A Gentle Introduction To Graph Theory | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/a-gentle-introduction-to-graph-theory-77969829ead8"
+            }
+        ]
+    },
+    {
+        "title": "how uber computes ETA",
+        "related_notes": [
+            "graphs"
+        ],
+        "content": "# Uber ETA Computation\n\nUber uses a [[graphs]] representation of the map or the route, where the roads are the edges and the intersections are nodes. \n\nThey partition the [[graphs]] and pre-compute the time to efficiently estimate the ETA. This partition makes it easy to compute without using the dijikstras's algo which can be expensive for a graph that can contain 100s of thousands of nodes (intersections). \n\nThe [[graphs]] are weighted graphs that denote the traffic and distance based on the traffic, which further optimises the efficiency of ETA. \n\nRead and dive deep further into the topic. refer to the references below.",
+        "references": [
+            {
+                "title": "💪 Try this Microsoft problem",
+                "link": "https://instabyte.io/p/microsoft-coding-problem-uber-design"
+            },
+            {
+                "title": "Uber ETA - by Neo Kim - System Design Newsletter",
+                "link": "https://newsletter.systemdesign.one/p/uber-eta?utm_source=instabyte.io&utm_medium=referral&utm_campaign=try-this-microsoft-problem"
+            },
+            {
+                "title": "Uber Blogs - H3",
+                "link": "https://www.uber.com/en-IN/blog/h3/"
+            }
+        ]
+    },
+    {
+        "title": "dependency graphs",
+        "related_notes": [
+            "directed acyclic graphs",
+            "topological sorting",
+            "graphs",
+            "dependency graphs",
+            "directed acyclic graphs",
+            "topological sorting",
+            "graphs"
+        ],
+        "content": "# dependency graphs\n\nDependency [[graphs]] are essentially [[directed acyclic graphs]] that helps resolve dependencies for any package. Package managers like `npm` or `yarn` use [[directed acyclic graphs]] for resolving their dependencies. \n\nDependency [[graphs]] can be confusing but with the below example it is easy to understand. \n\n```mermaid\ngraph LR;\n\tA --> B\n\tA --> C\n\tB --> D\n```\n\nFrom the above graph, we can say that:\n\n> A is dependent on B and C. B is dependent on D. \n\nThe above statement might seem confusing if you take the literal meaning of the directed edges. But what this means in [[dependency graphs]] is that before we install the dependency `A`, dependencies `B` and `C` must be installed and before we install the dependency `B`, dependency `D` must be installed. \n\nThis ultimately resolves dependency issues. \n\n*Q:* If we do [[topological sorting]] on a dependency graph we essentially get the reverse order in which we have resolve the dependencies. Is that right? Why is it that way? \n*A:*",
+        "references": [
+            {
+                "title": "Spinning Around In Cycles With Directed Acyclic Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/spinning-around-in-cycles-with-directed-acyclic-graphs-a233496d4688"
+            }
+        ]
+    },
+    {
+        "title": "Recursion",
+        "related_notes": [
+            "Stack",
+            "Recursion-fact-non-tail.excalidraw",
+            "[[stack",
+            "Recursion-fact-tail.excalidraw",
+            "Recursion-Boxes-Tree-Example.excalidraw",
+            "stack",
+            "Stack",
+            "Arrays",
+            "Quick Sort",
+            "Merge Sort",
+            "Strings"
+        ],
+        "content": "# Recursion\n\n### Summary\n- Recursion is a method for solving computational problems where the solution to the problem depends on solutions of smaller instances of the problem.\n\n> [!quote]\n> \"Recursion is defining a problem in terms of smaller versions of itself\"\n\n**Three Parts:** A recursion problem has 3 parts\n1. Base Case: solution to the simplest possible problem.\n2. Work towards Base case: for any problem the base case is the final goal.\n3. Recursive call: calling ourselves where each call solves the problem on a smaller version but on the same algorithm or code.\n\n> [!tip]\n> Consider recursion as having a weird gift box that contains a solution to your problem, but when you open the box you have many other boxes. There are 2 types of boxes:\n> 1. Box that contains other boxes a.k.a `Recursive boxes`\n> 2. Box that contains a value a.k.a `Base case box`<br>\n> **Whenever you are solving a seemingly recursive problem, follow these 2 steps:**\n> Step-1: Recognise base case and recursive case\n> Step-2: Map out a decision tree for the recursive calls<br>\n\n![[Recursion-Boxes-Tree-Example.excalidraw]]\n\n### Tail Recursion\nIt is a recursive function in which the last statement executed by the function is the recursive call after this there is no other statement to execute.\n\n> [!example]\n> ```python\n> def prints(n):\n> \tif (n < 0):\n> \t\treturn\n> \tprint(\"n:\", n)\n> \tprints(n-1)\n> prints(4)\n> ```\n> In the example above the last statement executed by the function is the recursive call hence this function is a `tail-recursion.`\n\n#### Why is tail-recursion optimal?\n- Tail-recursive functions can be `optimised` by the `compiler`.\n- Compilers use a `[[[[stack]]]]` to execute recursive procedures. Every time a recursive procedure is `called` the compiler `pushes` the recursive call with the arguments to the [[Stack]] (also adds the no. of statements to execute after recursive call). After a recursive call has `finished execution` it is `popped` out.\n- This usually leads to `more [[stack]] depth` in case of `non-tail-recursive functions`.\n- Some programming languages implement `tail-call-optimisation - TCO` which leads to constant auxiliary space instead of the usual O(N).\n\n#### Example:\n\n**Factorial:** We all know the recursive function for solving factorial of a number.\n\n```python\ndef fact(n):\n\tif n == 0:\n\t\treturn 1\n\treturn n * fact(n-1)\nprint(fact(5))\n```\n\n- But this is not a tail-recursive-function. Even though, it looks like the last statement executed is the recursive call but the thing is after we get the output of fact(n-1) it has to multiplied with n to get out final output. Hence, it makes this function non-tail-recursive.\n\n![[Recursion-fact-non-tail.excalidraw]]\n\n- Instead of multiplying n with factorial of n-1 which leads to non-tail-recursion, we can calculate the factorial at each step and store it in a extra variable which can be returned directly.\n\n```python\ndef fact_tail(n, acc = 1):\n\tif n == 0:\n\t\treturn acc\n\treturn fact_tail(n-1, n*acc)\nprint(fact_tail(5))\n```\n\n- In this case there is no statement to be executed after the recursive call. Hence this makes it tail-recursive, that is there is no need of a [[Stack]] trace cause the output is computed and passed at every step.\n\n![[Recursion-fact-tail.excalidraw]]\n\n> [!note]\n> Python doesn't support `Tail-Call-Optimisation(TCO)` hence it still creates a [[Stack]] trace for the non-tail-recursive-function we wrote in Python above. This is the reason why we have used the line`return fact_tail(n-1, n*acc)` as it needs to return the result to previous calls.\n\n### Memoization\nIn some cases, you may be computing the result for previously computed inputs. Let's look at the Fibonacci example again. `fib(5)` calls `fib(4)` and `fib(3)`, and `fib(4)` calls `fib(3)` and `fib(2)`. `fib(3)` is being called twice! If the value for `fib(3)` is memoized and used again, that greatly improves the efficiency of the algorithm and the time complexity becomes O(n).\n\n### Essential Qs\n- [Generate Parenthesis](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Recursion/Medium/1.%20Generate%20Parenthesis.md#L4)\n- [Combinations](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Recursion/Medium/2.%20Combinations.md#L4)\n- [Subsets](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Recursion/Medium/3.%20Subsets.md#L4)",
+        "references": [
+            {
+                "title": "Recursion cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/recursion/"
+            },
+            {
+                "title": "Programming - Recursion",
+                "link": "https://users.cs.utah.edu/~germain/PPS/Topics/recursion.html"
+            },
+            {
+                "title": "Tail Recursion - Section 2 and Homework 2 | Coursera",
+                "link": "https://www.coursera.org/lecture/programming-languages/tail-recursion-YZic1"
+            },
+            {
+                "title": "Recursion for Beginners - Fibonacci Numbers - YouTube",
+                "link": "https://www.youtube.com/watch?v=dDokMfPpfu4&t=391s"
+            },
+            {
+                "title": "What is Tail Recursion - GeeksforGeeks",
+                "link": "https://www.geeksforgeeks.org/tail-recursion/"
+            },
+            {
+                "title": "ChatGPT | Clarification of return statement & TCO in Python",
+                "link": "https://chatgpt.com/share/71be8e68-5b1a-47e8-a0ad-636b931a6202"
+            }
+        ]
+    },
+    {
+        "title": "Merge Sort",
+        "related_notes": [
+            "Merge-Sort-Example.excalidraw",
+            "Stack",
+            "Arrays",
+            "Quick Sort",
+            "Quick Sort |quick sort",
+            "Quick Sort vs Merge Sort"
+        ],
+        "content": "# Merge Sort\n\n## Summary\nA Divide & Conquer approach to sorting.\n\nSplit the array into 2 halves at every step until they are single elements\n\nMerge the split halves by sorting them.\n\nThe splitting takes O(log n) time while the merge takes O(n) time hence time complexity is O(n.log n)\n\n### Complexity\n**Time Complexity:** O(n. log n)\nWorst, Avg, Best are the same.\n\n**Space Complexity:** O(n) -> because of the auxiliary space used.\n\n![[Merge-Sort-Example.excalidraw]]\n\n### Code\n```python\nfrom typing import List\n\ndef merge(arr: List[int], low: int, mid: int, high: int):\n\ttemp = []\n\ti = low\n\tj = mid + 1\n\twhile i <= mid and j <= high:\n\t\tif arr[i] <= arr[j]:\n\t\t\ttemp.append(arr[i])\n\t\t\ti += 1\n\t\telse:\n\t\t\ttemp.append(arr[j])\n\t\t\tj += 1\n\twhile i <= mid:\n\t\ttemp.append(arr[i])\n\t\ti += 1\n\twhile j <= high:\n\t\ttemp.append(arr[j])\n\t\tj += 1\n\tfor i in range(low, high+1):\n\t\tarr[i] = temp[i - low]\n\n\ndef mergeSort(arr: List[int], low: int, high: int):\n\tif low < high:\n\t\tmid = (low + high) // 2\n\t\tmergeSort(arr, low, mid)\n\t\tmergeSort(arr, mid+1, high)\n\t\tmerge(arr, low, mid, high)\n\n\narr: List[int] = [54, 29, 93, 17, 77, 31]\nprint(arr)\nmergeSort(arr, 0, len(arr) - 1)\nprint(arr)\n```",
+        "references": []
+    },
+    {
+        "title": "Big-O Notation",
+        "related_notes": [
+            "Stack",
+            "Binary Search",
+            "Arrays",
+            "Quick Sort",
+            "trees",
+            "Trees",
+            "Merge Sort",
+            "Tim Sort",
+            "1. Big-0 Notation.png",
+            "Strings",
+            "O(2^n)",
+            "DSA Mastery"
+        ],
+        "content": "# Big-O Notation\n\n## Summary\nIs a notation that is used by programmers around the world to evaluate algorithms and compare time and space complexities.\n\nBig-O Notation denotes the worst case scenario of any algorithm.\n\nIt is denoted as O(...) -> time or space complexity inside.\n\n### Rules\nThere are some rules to be followed when writing this notation.\n\n**Rule-1:** Highest degree of the equation is only considered. (worst case)\n\n> [!example]\n> O(n^2 + n.log n + n) becomes O(n^2)\n\n**Rule-2:** Constants are ignored.\n\n> [!example]\n> O(2n) or O(n/2) is equal to O(n) even though the first one is bigger. \n\n### Famous Big-O's\n\nThere are some Big-O time or space complexities that often appear in most of the algorithms or code we write.\n\n![[1. Big-0 Notation.png]]\n\nThe best one or the most fastest is O(1) while O(n!) is the slowest. When we write code we always try to write the algorithm with fastest time or space complexities and Big-O plays a good role to denote that.\n\n### O(1)\nConstant time or space complexity.\n> [!example]\n> **[[Arrays]]:**\n> - lookup\n> - push to end\n> - pop from end\n> \n> **HashMap:**\n> - lookup\n> - insert\n> - remove\n\n### O(log n)\nLogarithmic time or space complexity\n\nWhen input size decreases by half at each step, then the problem is O(log n).\n\n`2^x = n` , x is number of times the input size must be decreased by half to get single element. To find x we can apply log on both sides, `x = log2 n`\n> [!example]\n> - **[[Binary Search]]**\n> - **Heap:**\n> \t- push\n> \t- pop\n\n### O(n)\nLinear time or space complexity.\n\nThe most common time complexity when dealing with [[Arrays]] or [[Strings]].\n> [!example]\n> - **Looping**\n> - **Linear Search**\n> - **Build Heap**\n> - **Monotonic [[Stack]] or Sliding Window**\n\n### O(sqrt(n))\nNot very common complexity\n\n> [!example]\n> **Finding all factors of n**\n\n### O(n^2)\nSquared time or space complexity.\n\nOccurs when we loop through the 1d array for every single element in the 1d array which makes it `n * n` times.\n\nAlso common when traversing a 2d array or matrix and some sorting algorithms on 1d array.\n\n> [!example]\n> - **Traverse a matrix**\n> - **Pair of elements in array**\n> - **Insertion, Bubble, Selection Sort**\n\n### O(n.log n)\nLinear log time or space complexity\n\n`log n` occurs when we decrease the input size by half at each step, if this single step is applied n times then it becomes O(n.log n).\n\n> [!example]\n> - **Heap Sort**\n> - **[[Quick Sort]]**\n> - **[[Merge Sort]]**\n> - **[[Tim Sort]]**\n\n### O(2^n)\nThe complexity where at each step the input size increases by progressive power of 2.\n\nBinary [[trees]] like recursion or backtracking.\n\n> [!example]\n> ![[O(2^n)]]\n> **Binary [[Trees]]**\n\n### O(c^n)\nThe complexity where at each step the input size increases by progressive power of c.\n\n[[Trees]] with more than 2 child nodes at each step in recursion or backtracking.\n\n### O(n!)\nThe worst possible time or space complexity.\n\n> [!example]\n> - **Permutations**\n> - **Travelling Salesman Problem**",
+        "references": [
+            {
+                "title": "Big-O Notation - For Coding Interviews - YouTube",
+                "link": "https://youtu.be/BgLTDT03QtU"
+            },
+            {
+                "title": "NeetCode Big-O Notation",
+                "link": "https://neetcode.io/courses/lessons/big-o-notation"
+            }
+        ]
+    },
+    {
+        "title": "balanced vs unbalanced trees",
+        "related_notes": [
+            "balanced trees mermaid",
+            "Linked List",
+            "unbalanced trees",
+            "binary trees and binary search trees",
+            "tree depth traversals",
+            "Linked List"
+        ],
+        "content": "# Balanced vs Unbalanced Trees\n\n## Balanced vs Unbalanced\n\n### Balanced Trees \nBalanced trees are a type of binary tree where the tree follows a rule that makes tree traversal efficient.\n\n*Rule:* any binary tree is a balanced tree if the difference between the heights of left subtree and right subtree is at most 1.\n\n**Access:** \n$$\n\\begin{gathered}\nO(log \\ n) \\\\\nlog \\ n = ~h \\\\\nh = height \\ of \\ tree\n\\end{gathered}\n$$\n\n> [!example]-\n> ![[balanced trees mermaid]]\n\n> **The above tree is a balanced tree because the height difference between left and right subtree is exactly 1.**\n\n### Unbalanced Trees \nUnbalanced trees are the trees that don't follow the balanced rule and are usually skewed towards one side making it look like a [[Linked List]] which is a sequential data structure. Hence it defeats the use of having a tree. \n\n**Access:**\n$$\n\\begin{gathered}\nO(n) \n\\end{gathered}\n$$\n\n> [!attention]-\n> **The drawback of unbalanced trees is the operations performed on them are costly due to their skewness and similarity to sequential data structures.**\n\n> [!example]-\n> ![[unbalanced trees]]",
+        "references": []
+    },
+    {
+        "title": "topological sorting",
+        "related_notes": [
+            "directed acyclic graphs",
+            "graphs",
+            "topological sorting using khan's algo",
+            "topological sorting using dfs",
+            "directed acyclic graphs",
+            "graphs",
+            "topological sorting using khan's algo",
+            "topological sorting using dfs"
+        ],
+        "content": "# topological sorting\n\nTopological sorting is a way of ordering [[directed acyclic graphs]], which is quite important since [[directed acyclic graphs]] are used extensively and the ordering of the nodes is very important.\n\ntopological sorting just orders the vertices based on the interconnectedness of the edges. It makes sure that a vertex/node is only visited after all the vertices leading up to it is visited. *NOTE:* `Do not confuse with logic of topological sorting algorithm`\n\n```mermaid\ngraph LR;\n\tA --> B\n\tA --> C\n\tB --> D\n\tC --> D\n\tD --> E\n```\n\nwhat the above statement means is that vertex `D` can only be visited after `B` and `C` vertices are visited. And the ==ordering is not exactly== unique because it only depends on whether the vertices leading up to a vertex are visited or not. \n\ntopological ordering for above graph:\n1. A - B - C - D - E\n2. A - C - B - D - E\n\n> [!note]-\n> Topological sorting doesn't work for direct [[graphs]] with cycles, just think of it. \n\nThere are two ways to implement it:\n1. [[topological sorting using dfs]]\n2. [[topological sorting using khan's algo]]",
+        "references": [
+            {
+                "title": "Spinning Around In Cycles With Directed Acyclic Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/spinning-around-in-cycles-with-directed-acyclic-graphs-a233496d4688"
+            }
+        ]
+    },
+    {
+        "title": "hash functions",
+        "related_notes": [
+            "hash tables",
+            "Hash-Table-example.excalidraw",
+            "hash tables",
+            "Arrays"
+        ],
+        "content": "# Hash Functions \n\n### Summary\nHash functions are an integral part of [[hash tables]]. These functions let us map a key to a value, it performs some kind of operation on the key to determine the index in which the value should be stored in [[hash tables]]. \n\nThe value can be an index to an array that contains the actual value or the value itself. \n> [!example]\n> If *The Book of Life* is the key then the value could be the row in the shelf in which the book is in the library. Here the shelf can be the array and the row is the index of the array.\n\n![[Hash-Table-example.excalidraw]]\n\nEach index of the [[hash tables]] are called *buckets* and can sometimes hold more than one value, this scenario is called a ==collision==. \n\n> [!example]\n> An example of a collision would be if there was another book with 13 letters in the above example then even that book would belong to the bucket-1 in hash table.\n\nThe ==concept of collisions== is still a better idea than searching the entire array because we are decreasing the search space drastically, but collisions can cause a problem if majority of elements are mapped to a single bucket. Hence a good hash function is one that can *distribute the keys equally among the buckets* and is *easy to compute*.",
+        "references": [
+            {
+                "title": "Hashing Out Hash Functions. Over the course of the past few months… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/hashing-out-hash-functions-ea5dd8beb4dd"
+            }
+        ]
+    },
+    {
+        "title": "Searching & Sorting",
+        "related_notes": [
+            "Tim Sort",
+            "Binary Search",
+            "Arrays",
+            "Binary Search",
+            "Quick Sort",
+            "Recursion",
+            "Merge Sort",
+            "Quick Sort vs Merge Sort",
+            "Stability of Sorting Algorithms",
+            "Strings"
+        ],
+        "content": "# Searching & Sorting\n\n## Summary\n- `Sorting` is the process of rearranging elements either in ascending or descending order in a data structure. \n- `Searching` is the process of looking in a data structure if what we want is present and at what index.\n\nMost sorting algorithms take O(N^2) time complexity and there are some optimised algorithms that take O(n log n). These algorithms are the ones that are used as default sorting algorithms in most programming languages.\n\nA typical search for an element in a data structure would take O(n) time as we are looking into all the elements in the data structure. But an optimal way to do it would be to sort the values first and do a [[Binary Search]] which typically uses O(log n) time by intelligently choosing the right half to search in.\n\n> [!tip]\n> Bonus points if you can name the language's default sorting algorithm. <br>\n> **Python:** [[Tim Sort]]\n\n### Time complexity\n\n|Algorithm|Time|Space|\n| | | |\n|Bubble sort|O(n2)|O(1)|\n|Insertion sort|O(n2)|O(1)|\n|Selection sort|O(n2)|O(1)|\n|Quicksort|O(nlog(n))|O(log(n))|\n|Mergesort|O(nlog(n))|O(n)|\n|Heapsort|O(nlog(n))|O(1)|\n|Counting sort|O(n + k)|O(k)|\n|Radix sort|O(nk)|O(n + k)|\n\n| Algorithm     | Big-O     |\n|     - |     |\n| [[Binary Search]] | O(log(n)) |\n\n### Essential Qs\n- [[Binary Search]]\n- [Search in Rotated Sorted Array](https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/7.%20Search%20Rotated%20Array.md#L4)\n\n## Tasks\n- [ ] Learn Heap Sort\n- [ ] Learn Counting Sort\n- [ ] Learn Radix Sort",
+        "references": [
+            {
+                "title": "Sorting and searching cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/sorting-searching/"
+            },
+            {
+                "title": "Sorting Out The Basics Behind Sorting Algorithms | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/sorting-out-the-basics-behind-sorting-algorithms-b0a032873add"
+            }
+        ]
+    },
+    {
+        "title": "Arrays",
+        "related_notes": [
+            "Stack",
+            "Two-Pointers",
+            "Binary Search",
+            "Quick Sort",
+            "Merge Sort",
+            "Sliding-Window"
+        ],
+        "content": "# Arrays\n\n### Summary\n\nArrays are a linear data structure, that can store a single type of datatype. It is a contagious datatype that allows for constant time retrieval.\n\n### Common Terms\n\n1. SubArray - It is a slice of an array. It has to follow the same order of elements, but it doesn't have to be the same length of original array. \n> [!example]\n> For the array `[2, 3, 6, 1, 5, 4]`, `[3, 6, 1]` is a subarray while `[3, 1, 5]` is not a subarray.\n\n2. SubSequence - It is an sequence that follows the order of elements from left to right but not strictly and it is not a slice of the array. \n> [!example]\n> For the array `[2, 3, 6, 1, 5, 4]`, `[3, 1, 5]` is a subsequence but `[3, 5, 1]` is not a subsequence.\n\n\n### Time Complexity\n\n|       Operation       |   Big-O   | Note                                                                                                 |\n|:       :|:   :|:",
+        "references": [
+            {
+                "title": "2Sum",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/6.%202Sum.md#L4"
+            },
+            {
+                "title": "Best Time to Buy & Sell Stock",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Easy/8.%20Best%20Time%20to%20Buy%20%26%20Sell%20Stock.md#L4"
+            },
+            {
+                "title": "Product of Array Except Self",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/2.%20Product%20Except%20Self.md#L4"
+            },
+            {
+                "title": "Maximum Subarray",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/5.%20Maximum%20Subarray.md#L4"
+            },
+            {
+                "title": "Maximum Product Subarray",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/6.%20Maximum%20Product%20Subarray.md#L4"
+            },
+            {
+                "title": "Search in Rotated Sorted Array",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/7.%20Search%20Rotated%20Array.md#L4"
+            },
+            {
+                "title": "3Sum",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Medium/8.%203Sum.md#L4"
+            },
+            {
+                "title": "Container with Most Water",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/e67b5124b26c39cb0cc13f1c5b65e0f52f927021/Arrays%20%7C%20Strings/Medium/11.%20Container%20with%20Most%20Water.md"
+            },
+            {
+                "title": "Sliding Window Maximum",
+                "link": "https://github.com/Srikar-V675/DSA-Problems/blob/0c573923a912f903467d06e646b0a266d4e06d7b/Arrays%20%7C%20Strings/Hard/1.%20Sliding%20Window%20Maximum.md#L4"
+            },
+            {
+                "title": "Array cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/array/#introduction"
+            }
+        ]
+    },
+    {
+        "title": "types of graph edges",
+        "related_notes": [
+            "types-of-edges.excalidraw",
+            "graphs",
+            "graphs"
+        ],
+        "content": "# Graph Edges\n\n## Captures\nWe all know the main type of edges and they are *directed* and *undirected* edges. But we also need to know that there are several other types of edges that branch out from these two but have different significance based on the [[graphs]]. \n\n*Tree edges:* are the edges that make sure when you are traversing you reach new node in levels like in trees. \n\n*Non-Tree edges:* are the edges that are not tree edges but there can be overlaps depending on the [[graphs]] as you know they are not rule-followers. \n\nUnder non-tree edges we have three main types:\n1. Forward edges \n2. backward edges \n3. cross edges \n\nLet's take an example to help us understand, these edges. \n\n![[types-of-edges.excalidraw]]\n\nAll the blue edges above are *tree edges*, you can see that they make a tree if you structure it properly. \n\n*Forward edges:* green edges are forward edges *why?* because if you see it in the perspective of the tree edges, `u --> x` is going forward in the tree. \n\n*Back edges:* red edges are back edges *why?* because again just like forward edges, `x --> v` is going back in the tree. If you  notice there are also self-loops.\n\n*Cross edges:* brown edges are cross edges because, cross edges are the edges that connect two subtrees that don't have common ancestors. here `w --> y` who are in two different subtrees with no common ancestors. \n\nThese types apply to both directed and undirected [[graphs]]. But undirected graphs can only have tree edges and forward edges.",
+        "references": [
+            {
+                "title": "Spinning Around In Cycles With Directed Acyclic Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/spinning-around-in-cycles-with-directed-acyclic-graphs-a233496d4688"
+            }
+        ]
+    },
+    {
+        "title": "binary trees and binary search trees",
+        "related_notes": [
+            "trees",
+            "binary-tree.excalidraw",
+            "bst.excalidraw",
+            "tree depth traversals",
+            "trees",
+            "tree depth traversal use cases",
+            "tree level order traversal",
+            "Searching & Sorting"
+        ],
+        "content": "# Binary Trees and BSTs\n\n### Summary\nEach node except the root node in a binary tree contains: left subtree and right subtree. A searchable binary tree is a binary search tree. \n\n![[binary-tree.excalidraw]]\n\n**Complete Binary tree:** a binary tree in which every level, except the last is completely filled and all nodes in the last level are as far left as possible.\n\n**Balanced Binary tree:** a binary tree in which the left and right subtree of every node doesn't differ in height by no more than 1.\n\n> [!Node Class]-\n> \n> ```python\n> class Node:\n> \tdef __init__(self, val):\n> \t\tself.val = val\n> \t\tself.left = None\n> \t\tself.right = None\n> ```\n> <br>\n\n### Binary Search Trees \nThese [[trees]] are a special case of binary trees where each node follows a rule.\n\n> *Rule:* left node is lesser than current node and right node is greater.\n\n![[bst.excalidraw]]\n\n> [!info]+\n> **In-order traversal of a BST will give the elements in order.**\n\n> [!time complexity]-\n> |Operation|Big-O|\n> | | |\n> |Access|O(log(n))|\n> |Search|O(log(n))|\n> |Insert|O(log(n))|\n> |Remove|O(log(n))|\n\n> [!important]-\n> **Space complexity of traversing a balanced binary tree would O(h), where 'h' is the height of the tree.** \n> **Space Complexity of traversing a BST would be O(log n).**\n> **Space Complexity of traversing a skewed binary tree or BST would be O(n).**",
+        "references": [
+            {
+                "title": "Leaf It Up To Binary Trees. Most things in software can be broken… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/leaf-it-up-to-binary-trees-11001aaf746d"
+            }
+        ]
+    },
+    {
+        "title": "Matrix",
+        "related_notes": [
+            "Arrays"
+        ],
+        "content": "# Matrix\n\n## Summary\n- A matrix is a 2D array. Problems related to matrix usually involve: DP or graph traversal. In this note we will discussing about problems that come under matrix operations and not DP or graph traversal.\n\n### Techniques\n#### Creating an empty NxM matrix\nWe often need to create an empty matrix of the same size as the original matrix to store visited states or the DP table.\n\n> [!tip]\n> ```python\n> empty_matrix = [[0 for _ in range(len(matrix[0])) ] for _ in range(len(matrix))]\n> ```\n\n#### Copying the Matrix\nWe also need to copy the original matrix to make changes in it and experiment without changing the original matrix.\n\n> [!tip]\n> ```python\n> copied_matrix = [ row[:] for row in matrix ]\n> ```\n\n#### Transposing Matrix\nThere are operations on matrices that benefit from transposing the matrix. For many grid-based games it can be modelled as a matrix. Often to check the winning condition of the current state of game, we need to do it both horizontally and vertically, instead of writing code for verifying both horizontally and vertically we can write the code for horizontally only and then transpose the matrix to reuse the horizontal verification code.\n\n> [!tip]\n> ```python\n> transpose = zip(*matrix)\n> ```\n\n### Essential Qs\n- [Set Matrix Zeroes](https://github.com/Srikar-V675/DSA-Problems/blob/17caa0a470a55f70437451878da0dfacbeb57e45/Arrays%20%7C%20Strings/2D%20Array/1.%20Set%20Matrix%20Zeroes.md)\n- [Spiral Matrix](https://github.com/Srikar-V675/DSA-Problems/blob/17caa0a470a55f70437451878da0dfacbeb57e45/Arrays%20%7C%20Strings/2D%20Array/2.%20Spiral%20Matrix.md)\n\n## Tasks\n- [ ] Create permanent zettel",
+        "references": [
+            {
+                "title": "Matrix cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/matrix/"
+            }
+        ]
+    },
+    {
+        "title": "DB Normalization",
+        "related_notes": [],
+        "content": "# DB Normalization\n\n### Summary\n*Normalization* is the process of minimising redundancy in relations or a set of relations. Redundancy in relations can cause insert, delete and update anomalies. The same concept is used in databases with a set of rules or forms to follow.\n\n### Normal Forms\n**First Normal Form - 1NF:** each table cell must contain only single value and each column name must be unique.\n\n**Second Normal Form - 2NF:** each non-key attribute is dependent on the primary key.\n\n**Third Normal Form - 3NF:** all non-key attribute but be independent of each other.\n\n**Boyce-Codd Normal Form - BCNF:** stricter form of 3NF, states that each non-key attribute be dependent only on the candidate key.\n\n**Fourth Normal Form - 4NF:** ensures that the table doesn't contain any multi-valued dependencies.\n\n**Fifth Normal Form - 5NF:** decomposing table into smaller tables to remove data redundancy and ensure data integrity\n\n## Tasks\n- [ ] Further exploration on DB Normalization",
+        "references": [
+            {
+                "title": "Normal Forms in DBMS - GeeksforGeeks",
+                "link": "https://www.geeksforgeeks.org/normal-forms-in-dbms/"
+            }
+        ]
+    },
+    {
+        "title": "dfs and cycles in graphs",
+        "related_notes": [
+            "Stack",
+            "dfs-cycle.excalidraw",
+            "graphs depth first search",
+            "Recursion",
+            "types of graph edges",
+            "graphs",
+            "cyclic and acyclic graphs",
+            "Stack",
+            "graphs depth first search",
+            "Recursion",
+            "types of graph edges",
+            "graphs"
+        ],
+        "content": "# DFS and Cycles \n\n## Captures\nWe are aware of [[cyclic and acyclic graphs]] and they play an important role when we are traversing [[graphs]]. \n\nThe [[Recursion]] working of [[graphs depth first search]], makes it a powerful tool to detect cycles. \n\n*Why is that?* \nWe know from [[types of graph edges]] that back edges occur when a node in a tree path links to one of its ancestors. And back edges are essentially edges that form a cycle in [[graphs]].\n\n```mermaid\ngraph LR;\n\tU --> V\n\tV --> X\n\tX --> Y\n\tY --> V\n```\n\nSince [[graphs depth first search]] maintains a [[Stack]] as it follows a path, if at any level there is a node that links to a node that is already in the stack (essentially in the path) then we know this link forms a cycle.\n\n![[dfs-cycle.excalidraw]]\n\nFrom the above diagram of the stack we can see how [[graphs depth first search]] detects cycle. It's innate nature of following a path in [[Recursion]] makes it efficient to detect back edges, which are the edges that form a cycle.",
+        "references": [
+            {
+                "title": "Spinning Around In Cycles With Directed Acyclic Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/spinning-around-in-cycles-with-directed-acyclic-graphs-a233496d4688"
+            }
+        ]
+    },
+    {
+        "title": "plan your learning in 10 mins",
+        "related_notes": [],
+        "content": "# Plan Your Learning\n\n## Captures\n[02:33](https://www.youtube.com/watch?t=153&v=nJcBqNfo9qc)\n*S.E.E.D*:\nS - set timer for 10 mins\nE - establish the key learning objectives. why learn this? what are the outcomes? what is essential? \nE - explore the map. scan headings, bold ones and images etc. focus on the parts that can answer the objectives. \nD - draw your thought process. gives feedback on your thought process and can help you know what you should work on more.",
+        "references": []
+    },
+    {
+        "title": "Queue",
+        "related_notes": [
+            "Arrays",
+            "Linked List",
+            "Queue-ArrayvsLL.excalidraw",
+            "Queue-People.excalidraw",
+            "Linked List",
+            "Arrays"
+        ],
+        "content": "# Queue\n\n## Summary\n- Queue is a linear data structure that offers a functionality that follows `FIFO - First In First Out`. \n\n### Idea\n- Queue follows FIFO which states that the first one to come in is also the first one to come out.\n- To ensure we follow this rule or functionality Queue's allow for addition of element at end of sequence(**enqueue** operation) and removal of elements from the start of sequence(**dequeue** operation).\n- End of sequence is called the back, tail, rear of the Queue.\n- Start of sequence is called the front, head of the Queue.\n\n![[Queue-People.excalidraw]]\n\n> [!hint]\n> **Breadth First Search** is implemented using Queue.\n\n### Implementation\n- Since Queue is a abstract data structure, it has to be implemented using another data structure as its base. \n- Since Queue holds sequence of elements, the structures that come to mind are: [[Arrays]] and [[Linked List]].\n- Since Queues are dynamic I would say Linked Lists are a better option right off the bat, but lets look into the reasoning a little more.\n\n#### [[Arrays]] vs [[Linked List]] for Implementation\n\n**[[Arrays]]**:\n- [[Arrays]] are static data structures i.e we need to know the expected size of array beforehand.\n- While insertion and removal at end in an array is O(1) time, insertion or removal at start of an array is still O(n) time because of the shifting that needs to be taken care of.\n- Hence enqueue would be O(1) time but dequeue would be O(n) time because after removal we need to shift the elements. This can be overcome by using a circular array.\n- But there is still a big problem looming behind this implementation and i.e the fact that when we enqueue and the corresponding memory is not available, then we need to copy the array and re-allocate it(O(n) time). \n- It's still considered O(1) on average.\n- There can also be wastage of memory as we can never know that at any given time most of the elements are present in the queue.\n\n**[[Linked List]]:**\n- As I said, [[Linked List]] can be best implementation for a Queue.\n- Linked Lists are dynamic and you don't have to know the size before hand.\n- We can maintain 2 pointers that point to the head and tail of the list which gets rid of the fact that we need to traverse.\n- We can make use of the pointers and enqueue and dequeue in O(1) not on average but all the time.\n\n![[Queue-ArrayvsLL.excalidraw]]\n\n> [!info]\n> `Queues` are used in many places **message queues**, **job scheduling**, **request & response queuing** in web servers etc...\n\n### Time complexity\n\n|Operation|Big-O|\n| | |\n|Enqueue/Offer|O(1)|\n|Dequeue/Poll|O(1)|\n|Front|O(1)|\n|Back|O(1)|\n|isEmpty|O(1)|\n### Essential Qs\n- [Implement Stack using Queue](https://github.com/Srikar-V675/DSA-Problems/blob/21c0ba2329fb01ebd7bceb23f557611f06d4584f/Queues/Easy/1.%20Implement%20Stack%20using%20Queue.md)\n\n### Recommended Qs\n- [Implement Queue using Stacks](https://github.com/Srikar-V675/DSA-Problems/blob/21c0ba2329fb01ebd7bceb23f557611f06d4584f/Queues/Easy/2.%20Implement%20Queue%20using%20Stacks.md)\n\n## Tasks\n- [ ] Permanent zettels\n- [ ] Learn `Circular Array` just the basics.",
+        "references": [
+            {
+                "title": "Queue cheatsheet for coding interviews | Tech Interview Handbook",
+                "link": "https://www.techinterviewhandbook.org/algorithms/queue/"
+            },
+            {
+                "title": "To Queue Or Not To Queue. When I first learned about background… | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/to-queue-or-not-to-queue-2653bcde5b04"
+            }
+        ]
+    },
+    {
+        "title": "graph representations",
+        "related_notes": [
+            "adjacency list problems",
+            "hash tables",
+            "Linked List",
+            "Arrays",
+            "trees",
+            "Matrix",
+            "graphs-2d-grid.excalidraw",
+            "graphs",
+            "adjacency list problems",
+            "graphs"
+        ],
+        "content": "# Graph Representations\n\n## Summary\n[[graphs]] are unstructured data structures and have more freedom than [[trees]] hence there are several ways to represent [[graphs]] and each one of them have their pros and cons. \n\n```mermaid\n \ntitle: Undirected graph example\n \ngraph LR;\n\t1   2\n\t2   3\n\t3   1\n```\n\n### Edge List \nRepresents [[graphs]] as a list(or array) of mapping between vertices which is also an individual [[Arrays]] of vertices pairs. \n\n```\nedge-list = [\n\t[1, 2],\n\t[2, 3],\n\t[3, 1]\n]\n```\n\n> [!tip]-\n> **The pairs are unordered for undirected graphs and ordered for directed graphs.** \n\n### Adjacency [[Matrix]] \nRepresents [[graphs]] as a 2D [[Matrix]] with either 0, 1 or a number. The rows and columns represents the vertices and the corresponding value at \\[row, col] gives us the edge.\n\n| Value at \\[i, j] | 0                                   | 1                                | num                                        |\n|      - |            -- |           -- |                |\n| **Meaning**      | *no edge between node i and node j* | *edge between node i and node j* | *weight of edge between node i and node j* |\n\n```\n  1  2  3\n    --\n1|0  1  1\n2|1  0  1\n3|1  1  0\n```\n\n> [!important]-\n> Undirected graphs adjacency matrix are symmetric along the diagonal and directed graphs adjacency matrix are un-symmetric along the diagonal. \n\n### Adjacency List \nRepresents [[graphs]] as a list of vertices where each vertex points to a [[Linked List]] that contains pointers to the vertices that have edges from this vertex. \n\n```\n[\n\t1 --> 2 --> 3 --> NULL\n\t2 --> 3 --> 1 --> NULL\n\t3 --> 1 --> 2 --> NULL\n]\n```\n\n### Hash table of [[hash tables]]\nRepresents graphs as literally what the name means where the outer hash table contains the vertices and each vertex has its own [[hash tables]] that contains the vertices it has a edge to.\n\n```\n{\n\t1: {2, 3},\n\t2: {1, 3},\n\t3: {1, 2}\n}\n```\n\n### 2D Grid or [[Matrix]]\nThis is a special type of representation for [[graphs]], it is similar to adjacency matrix but is functionally different in the way it represents the [[graphs]]. \n\nThis representation is commonly used to represent spatial problems like mazes, finding islands etc.\n\n**Points to remember:**\n1. Each cell is a node, unlike how in adjacency matrix each cell is an edge. \n2. And each nodes are neighbours are literally the nodes that are adjacent to it in the matrix. \n3. In many cases 0 represents a boundary that means that if the neighbour of a node is 0 then that means that the current node can't visit that node. \n\n```\n1 1 1 0\n0 1 1 0\n0 0 0 0\n0 1 1 0\n```\n\n> [!example]-\n> Let's take an example of islands. To represent this we can use 1s for an island and 0s for sea or water. It's clear that you can't go from sea to island and island to sea. And each cell in this grid represents either sea or island. You can also take an example of a maze where each node is either a path or a wall. \n\n![[graphs-2d-grid.excalidraw]]\n\n### Complexity\n\n| Representation                | Time Complexity | Space Complexity              | Problems                                                                                                                                                                                                        |\n|          -- |       |          -- |                                                                       |\n| Edge List                     | $$O(E)$$        | $$O(E)$$                      | Access or search for an edge takes linear time and defeats the purpose even though we have O(E) extra space.                                                                                                    |\n| Adjacency [[Matrix]]          | $$O(1)$$        | $$O(V^2)$$                    | Access, insert, delete and search of an edge is constant time which is good but we always need an extra space of O(V^2) regardless of the number of edges. Hence if we have a sparse graph then space is waste. |\n| Adjacency List                | $$O(d)$$        | $$O(E)$$<br>(OR)<br>$$O(2E)$$ | Refer to: [[adjacency list problems]]                                                                                                                                                                           |\n| Hash table of [[hash tables]] | $$O(1)$$        | $$O(E)$$<br>(OR)<br>$$O(2E)$$ | It is a pretty solid representation for graphs.                                                                                                                                                                 |\n| 2D Grid                       | $$O(1)$$        | $$O(Row \\ . \\ Col)$$          | This kind of representation is good for spatial problems where the edges are adjacent to nodes(up, down, left, right, maybe diagonal too). And they can be space in-efficient for sparse graphs.                |",
+        "references": [
+            {
+                "title": "From Theory To Practice: Representing Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38"
+            }
+        ]
+    },
+    {
+        "title": "Sliding-Window",
+        "related_notes": [
+            "Two-Pointers",
+            "Arrays"
+        ],
+        "content": "# Sliding-Window\n\n## Summary\n- Variant of same direction 2 pointer problems.\n- Function performs on the entire interval rather than just the two positions.\n- Keep track of the value of the window and slide the window along the array.\n\n### Steps\n- Compute the initial result of the window.\n- Slide the window along the array either by increasing right or left or both.\n- Recompute the result and check if optimal conditions is met.\n- Else continue\n\n### Problems\n- Substring\n- Subarray\n- max/longest sequence\n- subsequence\n\n### Template\n\n**Fixed Window:**\n```python\ndef sliding_window(input, window_size):\n\tans = 0\n\tfor i in range(window_size):\n\t\tans = compute ans\n\toptimal_ans = ans\n\tfor right in range(window_size, len(input)):\n\t\tleft = right - window_size\n\t\tremove input[left] from window(ans)\n\t\tadd input[right] from window(ans)\n\t\toptimal_ans = optimal(ans, optimal_ans)\n\treturn optimal_ans\n```",
+        "references": [
+            {
+                "title": "Subarray Sum - Fixed",
+                "link": "https://algo.monster/problems/subarray_sum_fixed"
+            },
+            {
+                "title": "AlgoMonster: The Structured Path to Success on LeetCode Data Structure & Algorithm Interviews",
+                "link": "https://algo.monster/templates"
+            }
+        ]
+    },
+    {
+        "title": "cyclic and acyclic graphs",
+        "related_notes": [
+            "graphs"
+        ],
+        "content": "# Cyclic and Acyclic [[graphs]]\n\n## Captures\nWe have directed and undirected [[graphs]] and these graphs could also be cyclic or acyclic graphs. \n\n*Cyclic:* [[graphs]] that have at least one single cycle i.e edges that allow traversal of the nodes in a circular fashion. \n\n```mermaid\ngraph LR;\n\tA   B\n\tB   D\n\tB   C\n\tC   A\n\tD   X\n```\n\n*Acyclic:* [[graphs]] that have no cycles at all i.e the edges don't allow traversal of the nodes in a circular fashion.\n\n```mermaid\ngraph LR;\n\tA   B\n\tA   C\n\tC   D\n\tB   E\n\tB   F\n```\n\nSelf-loops can only occur in directed [[graphs]] and they are considered cyclic because it forms a cycle with itself. \n\n```mermaid\ngraph LR;\n\tA --> B\n\tA --> C\n\tB --> D\n\tD --> D\n\tC --> E\n\tA --> E\n```\n\nSince directed graphs are very important and most of the data in this world are mostly directed. We have much importance in:\n1. Directed Cyclic Graphs\n2. Directed Acyclic Graphs (DAG) *",
+        "references": []
+    },
+    {
+        "title": "Two-Pointers",
+        "related_notes": [
+            "Arrays"
+        ],
+        "content": "# Two-Pointers\n\n## Summary\n- Moving 2 pointers in a array based on a condition\n- Used when you want to optimise a O(n^2) time -> O(n) time and O(n) space -> O(1) space.\n### Characteristics\n- 2 pointers\n- Easy way to decide which pointer to move\n- Way to process the array\n\n### Classifications\n- **Same Direction:** The pointers move in the same direction.\n- **Opposite Direction:** The pointers move in opposite direction.\n\n### Problems...\n- Palindrome\n- 2Sum, 3Sum...\n- Linked Lists\n- Multiple Sequences (comparing sequences to find the right one)-> Longest word with condition ...\n- Find 2 elements where condition...\n- Problems asking for O(1) memory optimisation.\n\n> [!info]\n> **Sliding Window** problems are similar to same direction 2 pointer problems but in sliding window we compute something for the whole window and update it as we add/remove an item from the window, instead of recalculating for the whole window.",
+        "references": [
+            {
+                "title": "Subarray Sum - Fixed",
+                "link": "https://algo.monster/problems/subarray_sum_fixed"
+            }
+        ]
+    },
+    {
+        "title": "Binary Search",
+        "related_notes": [
+            "Arrays"
+        ],
+        "content": "",
+        "references": [
+            {
+                "title": "Vanilla Binary Search",
+                "link": "https://algo.monster/problems/binary_search_intro"
+            },
+            {
+                "title": "First True in a Sorted Boolean Array",
+                "link": "https://algo.monster/problems/binary_search_boundary"
+            }
+        ]
+    },
+    {
+        "title": "adjacency list problems",
+        "related_notes": [
+            "graph representations",
+            "Linked List",
+            "graph representations",
+            "graphs"
+        ],
+        "content": "# adjacency list problems\n\n> [!info]-\n> **Degree** of a vertex is the number of edges that it has or the number of neighbouring nodes it has.\n\nWhat can be the highest degree of a node? It would not be more than:\n$$(|V| - 1)$$\nbecause the potential neighbours a node can have is the number of vertices minus itself.\n\nSince in an adjacency list, each vertex has its neighbours as a [[Linked List]], the maximum length of the [[Linked List]] will be:\n$$(|V| - 1)$$\n\nThis would make the access time equal to:\n$$O(d)$$\nwhere,\nd = degree of the vertex. `d` could be equal to:\n$$(|V| - 1)$$\n\n> [!caution]-\n> **Another problem is about the fact that directed [[graph representations]] would occupy O(E) while undirected [[graph representations]] would occupy O(2E). Just take up a example you'll realise.**",
+        "references": [
+            {
+                "title": "From Theory To Practice: Representing Graphs | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/from-theory-to-practice-representing-graphs-cfd782c5be38"
+            }
+        ]
+    },
+    {
+        "title": "make conceptual notes not sequential",
+        "related_notes": [],
+        "content": "# Conceptual Notes\n\n## Captures\n [00:40](https://www.youtube.com/watch?t=40&v=MYJsGksojms)\nWe care more about the information rather than the actual notes. \n\n[02:55](https://www.youtube.com/watch?t=175&v=MYJsGksojms)\nDo not write ever single thing that the resource you are learning from says or has mentioned, instead concentrate on understanding the concepts and evaluating them in your head, and trying to understand them. \n\n[03:12](https://www.youtube.com/watch?t=192&v=MYJsGksojms)\nTaking conceptual notes involves listening or reading the resource attentively and constantly evaluating whether the information presented to you (on a platter. :)) is *USE*.\n\n> *USE:* Unimportant, Self Explanatory or Easy to Memorize\n\n[06:30](https://www.youtube.com/watch?t=390&v=MYJsGksojms)\nLean on old stuff as support and don't forget them since most of the information you are consuming is one or the other way connected. *Link your notes*.\n\n[08:21](https://www.youtube.com/watch?t=501&v=MYJsGksojms)\nEverything in this world is not categorised into disciplines or domains as we do it, but they all are connected in one or the other way and lean more into one of the \"domains\". \n\n> Make sure to not limit your thoughts and link things.\n\n[12:02](https://www.youtube.com/watch?t=722&v=MYJsGksojms)\nThe way your brain stores or remembers information is my taking concepts and linking them, then why do you need to take sequential notes and increase the stress. \n\nInstead link your notes as you are taking them, making sure you study less later and reorganise it again. \n\n## Tasks\n- [ ] Compile it when you find time.",
+        "references": []
+    },
+    {
+        "title": "Binary Insertion Sort",
+        "related_notes": [
+            "Tim Sort",
+            "Binary-insertion-sort-example.excalidraw",
+            "Binary Search",
+            "Tim Sort",
+            "Binary Search"
+        ],
+        "content": "# Binary Insertion Sort\n\n## Summary\nBinary Insertion Sort is an essential part of [[Tim Sort]] and that is the reason why I came across it while learning [[Tim Sort]].\n\nAs the name suggests it is a combination of [[Binary Search]] and `insertion sort`.\n\n### Idea\nSince we know [[Binary Search]] takes O(log n) time to execute. This Sorting algo takes that to advantage by using it to find the right index at which the new element should be so that `insertion sort` can be used to insert the element at that index and the following elements are pushed.\n\nIn `insertion sort` alone, the algorithm finds the right index by comparing each element which takes more time and expensive operations.\n\n### Steps\n1. If the elements are already in increasing order it will keep going forward until it finds an element that violates it.\n2. Use binary search to find the right index at which the violating element should be present since we know the elements previous to violating element are sorted.\n3. Now use `insertion sort` to insert the violating element at that index and push the following elements forward.\n\n![[Binary-insertion-sort-example.excalidraw]]",
+        "references": [
+            {
+                "title": "The FASTEST sorting algorithm: Part 2 - Binary Insertion Sort - YouTube",
+                "link": "https://www.youtube.com/watch?v=6DOhQyqAAvU"
+            }
+        ]
+    },
+    {
+        "title": "graphs depth first search",
+        "related_notes": [
+            "tree depth traversals",
+            "Stack",
+            "graphs breadth first search#Other Representations",
+            "graphs breadth first search#Time Complexity",
+            "Recursion",
+            "Matrix",
+            "graphs breadth first search",
+            "graphs",
+            "graphs depth first search.png",
+            "Stack",
+            "tree depth traversals",
+            "trees",
+            "Recursion",
+            "graphs breadth first search",
+            "graph representations",
+            "graphs"
+        ],
+        "content": "# Graph DFS\n\n## Captures\nJust like [[tree depth traversals]], graph DFS also works very similarly and is again a [[Recursion]] problem since at every single step we make the same operation and if we reach the base case (which is all neighbouring nodes are visited) then we backtrack and try to find an other route. \n\nDFS sticks to one path and follows the structure until it ends and then backtrack to find another path.\n\n> [!tldr]+\n> **DFS algorithm is more like a solving a maze, where we pick one path and if we reach a dead end then we back track and check another path. This repeats until we have found the exit or we have run out of paths.**\n> \n\n![[graphs depth first search.png]]\n\nBase case of a DFS [[graphs]] [[Recursion]] is when every single neighbour of a node is visited or there are no outgoing edges. \n\nBasic steps of DFS in [[graphs]] are:\n1. add the node to the top of the [[Stack]].\n2. Mark it as visited and check its neighbouring nodes. \n3. Add one of the non-visited neighbouring nodes to the stack and repeat from step-2. If there are no non-visited neighbouring nodes pop it out of the [[Stack]]. \n\n### Time Complexity\n*Very similar to [[graphs breadth first search]] complexity*. Since ultimately we are visiting all the vertices and all its edges at-least once. \n![[graphs breadth first search#Time Complexity]]\n\n\n> [!important]+\n> T**he power of DFS on a graph is that it helps us check if a path exists between `node x` and `node y`. But it doesn't guarantee us the shortest path (could also give us the longest path) but it just tells us if a path exists.** \n\n## Code \n\n### [[Matrix]] \n```python\nnum_rows, num_cols = len(matrix), len(matrix[0])\ndef get_neighbours(coord): \n\trow, col = coord \n\tdirections = [(0, 1), (0, -1), (1, 0), (-1, 0)] \n\tneighbours = [] \n\tfor direction in directions: \n\t\tnext_row = row + direction[0] \n\t\tnext_col = col + direction[1] \n\t\tif 0 <= next_row < num_rows and 0 <= next_col < num_cols:\n\t\t\tneighbours.append((next_row, next_col)) \n\treturn neighbours\n\ndef dfs(node, visited):\n\tif node in visited: \n\t\treturn \n\tvisited.add(node)\n\tfor neighbour in get_neighbours(node):\n\t\tdfs(neighbour, visited)\n\nvisited = set()\ndfs(starting_node, visited)\n```\n\n![[graphs breadth first search#Other Representations]]\n\n### Iterative \n```python\nstack = deque([starting_node])\nvisited = set([starting_node])\n\nwhile stack:\n\tnode = stack.pop()\n\tfor neighbour in get_neighbours(node):\n\t\tif neighbour in visited:\n\t\t\tcontinue\n\t\tvisited.add(neighbour)\n\t\tstack.append(neighbour)\n```",
+        "references": [
+            {
+                "title": "Deep Dive Through A Graph: DFS Traversal | by Vaidehi Joshi | basecs | Medium",
+                "link": "https://medium.com/basecs/deep-dive-through-a-graph-dfs-traversal-8177df5d0f13"
+            }
+        ]
+    }
+]

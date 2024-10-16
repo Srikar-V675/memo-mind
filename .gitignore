@@ -1,0 +1,6 @@
+collections/vector_db
+aliases/
+.deleted/
+.venv/
+.env
+.env
