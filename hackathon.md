@@ -211,31 +211,6 @@ To sum up, semantic search using Qdrant, building block approach with LangChain,
 
 ---
 
-
-# 5)Platform Overview
-
-## Deployment
-
-The present version of the RAG chatbot is built as a Streamlit application while taking advantage of LangChain for the handling of the pure retrieval and mixed generation tasks. The setting up of Streamlit offers an interface to make the user interface interactive for the identified chatbot. LangChain engages a series of prompts, retrieval functions in addition to generative models to construct the context block to ensure LangChain functions optimally in providing responses while working with its modular framework. The synergy created by the Streamlit and LangChain integration enables smooth operation from query input to answer output.
-
----
-
-## Hosting
-
-Therefore, to ensure scalability these RAG chatbot can be hosted on cloud services like AWS, GCP or Microsoft Azure. They provide a way of implementing the platforms, with respect to traffic and with accommodating increases in users and system load. Also, in the case of cloud hosting, there are extensions to integrate the services of machine learning, storage services, and monitoring services in making the whole feature of the chatbot broader.
-
----
-
-## CI/CD Integration
-
-To ensure ordinary updates and random characteristics release, the deployment can incorporate the CI/CD pipeline. This way, the changes whether in the AI model of the chatbot, or even frontend of the tool, can be developed, tested, verified, and deployed without major impacts to the user. It also means that with a proper testing and deployment pipeline in place the system can remain secure while new features are delivered to production quickly with little to no external interruption.
-
----
-
-All in all, embedding Streamlit, LangChain, and cloud platforms are a sound, extensible, and maintainable approach to the RAG chatbot with CI/CD to support the elongated development of its features.
-
-
-
 # 6) Programming Languages Overview
 
 ## Python
@@ -278,21 +253,26 @@ Thus, the specificity of the RAG chatbot includes the individual knowledge base,
 
 
 
-# 8) Technical Aspect in the RAG Chatbot Creation
+# 8) Technical Complexity in the RAG Chatbot Creation
 
 ## Data Processing
 
-Fundamentally, the Retrieval-Augmented Generation (RAG) chatbot that has been developed incorporates text data processing features. It deals effectively with other meta data and.md file related files and brings all the necessary information out for proper arrangement. This involves partitioning the data into blocks so that in the course of defining user interactions, data retrieval is more efficient. Moreover, when these chunks are vectorized the semantic search functions allow the chatbot to quickly obtain relevant information from the material. This level of processing is important for answering users’ inquiries more frequently and more relevant, thus improving the utilization of services.
+Loading the markdown files from the notes directory was no problem, but we faced complexities in strcuturing the markdown files as a JSON file which can be used for chunking and embedding. We spent a good amount of time trying to figure the optimal text splitter, chunk size and chunk overlap. MarkdownSplitter was giving either too big chunks or too small chunks. Recursive Text Splitter gave use good results but we had to change the chunksize to 1000 and chunk overlap to 150 to get the optimal balance. 
 
 
-## Scalability
+## Vector DB
 
-Another critical design consideration well-agreed in the design of the RAG chatbot is scalability. The architecture is designed to include future data sources like social networking sites and code repositories thereby increasing the variety of information that can be used in producing the responses. Over time, the uses for the chatbot become more complex as the application integrates new forms of interactions, such as multi- modal and cross-platform information collection. Such growing functionalities and added features are evidence of a proactive approach that makes a given chatbot relevant and useful in the face of constantly evolving usage patterns and a growing digital world.
+We were planning to use a simple vector store like FAISS (by facebook) to implement the vector store but we faced various problems with storing it and after many retries and code corrections, the code stopped working totally. Therefore, we moved to Qdrant vector DB, it was easy to setup and saved us time. We were confused as to whether we should include metadata or not in the vector db for eac chunk, we finally decided to keep the metadata because it could be useful to show the user the related notes and references. 
+
+## Context-Aware Chatbot
+
+Creating the UI for the chat application using Streamlit was easy and finished early but where we had problems was when we wanted to use langchains RetrievalQA as our chain for the chatbot. RetrievalQA retrieves the relevant information from vector DB automatically by using the vector DBs retriever. Since we wanted to give custom prompts along with context, we had to create a template and I was confused in creating the template because there was no documentation as to which one to use. We finally decided on one and implemented it. 
+
+## Custom Prompt Finetuning
+
+The custom prompts for the chatbot was nowhere at this level in the start. We gave very simple instructions and sometimes got rubbish from the LLM. But we kept checking different prompts, formats, commands etc and finally found that the prompts available in the repo to be the best balance. Because of these custom prompts the user can perform tasks that are often used without giving any extra instructions. 
 
 ---
-
-Therefore, we can highlight two main technical novelties of the RAG chatbot: high-performance data processing, and architectural planning for future expansion.
-
 
 
 # 9)Functionality of the RAG Chatbot
