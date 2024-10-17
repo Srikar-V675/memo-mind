@@ -64,6 +64,8 @@ The chatbot provides responses in natural language, mimicking your writing style
 
 Below I've chosen the `Blogs or Article Writing` prompt to generate a response:
 
+Check out the vid here: [Video](https://drive.google.com/file/d/14cZptuPuwLGmIsONrmbldQlE8Cn0xy3M/view?usp=sharing)
+
 ![alt text](image-1.png)
 
 ## Getting Started
