@@ -1,3 +1,52 @@
+# 0) PPROTOTYPE DETAILS
+
+### Prototype Overview
+
+The prototype will be a conversational AI application that leverages Retrieval-Augmented Generation (RAG) for context-aware responses. The system will integrate:
+- A vector database (e.g., Qdrant) to store and retrieve dense vector representations of content.
+- A pre-trained generative model (e.g., Gemini-Flash-1.5-7b) for generating responses.
+- A custom prompting mechanism to optimize responses for different tasks (e.g., summarization, coding assistance, interview preparation).
+
+### Key Features
+
+1. **Context-Aware Chatbot**  
+   The chatbot will use RAG to retrieve relevant information from the vector database and generate responses based on the context of the query. This will help provide more accurate and up-to-date answers.
+
+2. **Custom Prompting for Task Optimization**  
+   Custom prompts will be used to guide the generative model towards specific tasks like content summarization, Q&A, content generation, and coding advice.
+
+3. **User Interface via Streamlit**  
+   A web-based interface built using Streamlit will provide a simple, interactive front end for users to interact with the chatbot, upload documents, and view responses.
+
+### Prototype Architecture
+
+1. **Data Ingestion and Vector Database Integration**  
+   - Source data will consist of markdown files from an Obsidian vault, which will be chunked and converted into vector embeddings using a model like OpenAI's `text-embedding-ada-002`.
+   - The embeddings will be stored in a vector database (Qdrant) along with metadata, such as note titles, tags, and reference links.
+
+2. **Retrieval Process**  
+   - When a query is made, the system will retrieve the top-k most similar embeddings from the vector database using a semantic search using `mmr`.
+   - Retrieved embeddings will include context, such as related note information and reference links.
+
+3. **Generative Response with Custom Prompts**  
+   - The retrieved content will be fed into the Gemini-Flash-1.5-7b generative model.
+   - Custom prompts will adapt the generation process according to the task (e.g., summarization prompt, question-answering prompt).
+
+4. **Frontend Interface**  
+   - A Streamlit app will serve as the user interface for interacting with the prototype.
+   - It will allow users to type queries, select custom prompts and view responses.
+
+### Technologies and Tools
+
+1. **Backend Components**
+   - **Vector Database:** Qdrant for storing vector embeddings and performing semantic searches.
+   - **Embedding Model:** `BAAI/bge-large-en` or similar model for creating vector representations of text.
+   - **Generative Model:** Gemini-Flash-1.5-7b for generating conversational responses.
+
+2. **Frontend Components**
+   - **User Interface:** Streamlit for creating a simple, web-based UI.
+   - **Python Libraries:** `LangChain` for managing RAG processes, `google.generativeai` for interfacing with generative models.
+
 # 1) Project Idea Roadmap: Developing of RAG Chatbot
 
 This roadmap shows an example of creating an open-domain Retrieval-Augmented Generation (RAG) chatbot where your **Obsidian notes** will be the source of information to be retrieved. The major goal with all of this is to **enhance the specificity of the response** from the chatbot even more than it currently is. Also, the furtherance aims at diversifying new **data sources** across different regions of the internet over time. Finally, the section discusses the **status of this project now, in the short term, mid term, and long term** for this project in…
