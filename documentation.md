@@ -4,6 +4,7 @@ This document provides a comprehensive overview of the Memo-Mind project, includ
 
 ## Table of Contents
 - [Memo-Mind Documentation](#memo-mind-documentation)
+  - [Getting Started](#getting-started)
   - [Table of Contents](#table-of-contents)
   - [Architecture](#architecture)
   - [System Architecture and Components](#system-architecture-and-components)
@@ -15,6 +16,50 @@ This document provides a comprehensive overview of the Memo-Mind project, includ
     - [Streamlit Frontend](#streamlit-frontend)
   - [Future Enhancements](#future-enhancements)
   - [Conclusion](#conclusion)
+
+## Getting Started
+- make sure to clone the repo into your local system:
+```git
+git clone https://github.com/Srikar-V675/memo-mind.git
+```
+- now cd into the project
+```
+cd memo-mind
+```
+- create a virtual environment
+```
+python -m venv .venv
+```
+- activate the virtual environment
+```
+# macos/linux
+source .venv/bin/activate
+```
+- install the requirements
+```
+pip install -r requirements.txt
+```
+- setup Qdrant as your vector db
+```docker
+docker pull qdrant/qdrant
+docker run -p 6333:6333 -p 6334:6334 \
+    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
+    qdrant/qdrant
+```
+- run the collector for data extraction from notes
+make sure to change the notes_dir to the notes directory in your local machine
+```
+python collector.py
+```
+- run the ingestor to convert the processed files into chunks, embed it and store in Qdrant
+```
+python ingestor.py
+```
+- now you can run the streamlit app
+```
+# make sure you have your google studio api_key
+run streamlit app.py
+```
 
 ## Architecture
 
