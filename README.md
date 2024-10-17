@@ -1,8 +1,24 @@
 # Memo-Mind
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/db0b3868-4dca-4f37-ae98-6bc838540291" width="300" />
+</p>
+
+
+
 `Memo-Mind` is a personalized Retrieval-Augmented Generation (RAG) chatbot built using Qdrant and LangChain, designed to serve as a personal knowledge assistant. Unlike generic chatbots, Memo-Mind is tailored to your unique knowledge base, focusing on your personal notes and writing style. The chatbot does not work with sensitive personal data like credit cards or financial information; instead, it leverages your self-curated content such as notes, social media interactions, and code repositories to provide context-aware assistance.
 
 Refer to the documentation for more technical details: [[documentation.md |  Documentation]]
+
+## Team
+
+**College:** The Oxford College of Engineering
+
+**Department:** CSE
+
+- Srikar V [Github](https://github.com/Srikar-V675)
+- Sahana R [Github](https://github.com/Sahanar03)
+- Sabah Tabasum [Github](https://github.com/Sabah-Tabasum)
 
 ## What's Special About Memo-Mind?
 
@@ -20,11 +36,7 @@ The core vision behind Memo-Mind is to create a digital twin of the user. This "
 
 Currently, the prototype is focused on processing Obsidian notes. Future iterations aim to include other data sources, enabling a more comprehensive digital twin experience.
 
-## Team
 
-- Srikar V 
-- Sahana R
-- Sabah Tabasum
 
 ## Features
 
