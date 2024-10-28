@@ -11,6 +11,7 @@ from langchain.chains import RetrievalQA
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.embeddings import HuggingFaceBgeEmbeddings
 
+
 # Configure API key for Google Gemini
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
